@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cpxkrpjnxqvde"]
+
+[ext_resource type="PackedScene" uid="uid://dm3kxxew865f5" path="res://character_body_2d.tscn" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://dm4dcwqwkn3rs" path="res://world.gd" id="1_fj7yv"]
+
+[node name="World" type="Node2D" unique_id=440896723]
+script = ExtResource("1_fj7yv")
+
+[node name="CharacterBody2D" parent="." unique_id=1088165364 instance=ExtResource("1_f3sb7")]
+position = Vector2(516, 248)
+
+[node name="Control" type="Control" parent="." unique_id=13870464]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1168.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=904441267]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Save" type="Button" parent="Control/HBoxContainer" unique_id=723083559]
+layout_mode = 2
+text = "Save"
+
+[node name="Load" type="Button" parent="Control/HBoxContainer" unique_id=1667803110]
+layout_mode = 2
+text = "Load"
+
+[connection signal="pressed" from="Control/HBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Load" to="." method="_on_load_pressed"]
