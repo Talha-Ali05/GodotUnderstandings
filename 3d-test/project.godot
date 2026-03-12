@@ -10,13 +10,10 @@ config_version=5
 
 [application]
 
-config/name="ParticleSystem"
+config/name="3DTest"
+run/main_scene="uid://dkn7rhfsnwyug"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/brackeys_particle_controls/plugin.cfg")
 
 [physics]
 
