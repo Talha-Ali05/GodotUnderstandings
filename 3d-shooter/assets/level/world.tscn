@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://0olp5qkrtb21"]
+
+[ext_resource type="Texture2D" uid="uid://ms8txh2damj2" path="res://assets/level/checkboard.png" id="1_lyyjm"]
+[ext_resource type="PackedScene" uid="uid://gbmpn7q4h6la" path="res://Player/player.tscn" id="2_lluvm"]
+[ext_resource type="Script" uid="uid://bpv17t7wxuuyt" path="res://assets/level/label.gd" id="3_lluvm"]
+[ext_resource type="PackedScene" uid="uid://c1k8f40kc8vde" path="res://enemies/bat_spawner.tscn" id="4_6e2u3"]
+
+[sub_resource type="Environment" id="Environment_5brps"]
+background_mode = 1
+background_color = Color(0.93573904, 0.43540835, 0.35828733, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72651106, 0.62274784, 0.5617414, 1)
+tonemap_mode = 2
+tonemap_exposure = 0.58
+tonemap_white = 1.2
+fog_enabled = true
+fog_light_color = Color(0.75548524, 0.47025162, 0.27619112, 1)
+fog_height = 0.2
+fog_height_density = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v80jh"]
+albedo_color = Color(0.15358627, 0.86629814, 0.8300417, 1)
+albedo_texture = ExtResource("1_lyyjm")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lluvm"]
+albedo_color = Color(0.8438614, 0.77121013, 7.70092e-07, 1)
+albedo_texture = ExtResource("1_lyyjm")
+uv1_triplanar = true
+
+[node name="World" type="Node3D" unique_id=299005705]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1368194546]
+environment = SubResource("Environment_5brps")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2091316485]
+transform = Transform3D(-0.47092307, 0.18415383, 0.86273915, 0.7267953, 0.63528526, 0.2611154, -0.50000006, 0.75000006, -0.4330126, 0, 38.69225, 0)
+shadow_enabled = true
+metadata/_edit_group_ = true
+
+[node name="Player" parent="." unique_id=1359448494 instance=ExtResource("2_lluvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=411500830]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=185130274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+size = Vector3(10, 9, 10)
+material = SubResource("StandardMaterial3D_v80jh")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1488400457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -3, -6.5)
+size = Vector3(14, 9, 7)
+material = SubResource("StandardMaterial3D_v80jh")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1307673218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, -1, 12)
+size = Vector3(15, 9, 8)
+material = SubResource("StandardMaterial3D_v80jh")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1682169825]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5, 3, -13.5)
+size = Vector3(15, 9, 19)
+material = SubResource("StandardMaterial3D_v80jh")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1324938090]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -1, 29.5)
+size = Vector3(15, 9, 15)
+material = SubResource("StandardMaterial3D_v80jh")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=131804612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, -1, 13.5)
+size = Vector3(15, 9, 19)
+material = SubResource("StandardMaterial3D_v80jh")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="CSGCombiner3D" unique_id=633813122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5, -1, 12.5)
+size = Vector3(15, 9, 19)
+material = SubResource("StandardMaterial3D_v80jh")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1547408571]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -4, -28.5)
+size = Vector3(15, 9, 19)
+material = SubResource("StandardMaterial3D_v80jh")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=440975363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -1, -10)
+size = Vector3(8, 9, 14)
+material = SubResource("StandardMaterial3D_v80jh")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1479192395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -15)
+size = Vector3(8, 2, 4)
+material = SubResource("StandardMaterial3D_lluvm")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1212042999]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27, 4.5, -11)
+size = Vector3(8, 2, 4)
+material = SubResource("StandardMaterial3D_lluvm")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1656522625]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19, 2.5, -11)
+size = Vector3(8, 2, 4)
+material = SubResource("StandardMaterial3D_lluvm")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1229653509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 4.5, -1)
+size = Vector3(8, 2, 4)
+material = SubResource("StandardMaterial3D_lluvm")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="CSGCombiner3D" unique_id=354097737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1.5, 7)
+size = Vector3(8, 2, 4)
+material = SubResource("StandardMaterial3D_lluvm")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1881390200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, 10)
+size = Vector3(12, 2, 4)
+material = SubResource("StandardMaterial3D_lluvm")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1134915225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 1.5, 12)
+size = Vector3(16, 2, 4)
+material = SubResource("StandardMaterial3D_lluvm")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1368097250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, 18)
+size = Vector3(12, 2, 4)
+material = SubResource("StandardMaterial3D_lluvm")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1346913264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -9)
+size = Vector3(8, 2, 4)
+material = SubResource("StandardMaterial3D_lluvm")
+
+[node name="Label" type="Label" parent="." unique_id=1497602694]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "FPS :"
+script = ExtResource("3_lluvm")
+
+[node name="Bat Spawner" parent="." unique_id=583517729 instance=ExtResource("4_6e2u3")]
+transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, -10, 9, -9)

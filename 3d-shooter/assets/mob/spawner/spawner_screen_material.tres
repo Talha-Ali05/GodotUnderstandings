@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bh1ego7bi1olb"]
+
+[ext_resource type="Shader" uid="uid://cfnwyva3u4qeb" path="res://assets/mob/spawner/spawner_halo.gdshader" id="1_xu5sg"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_xu5sg")
+shader_parameter/color = Color(0, 0.78804886, 0.90732026, 1)

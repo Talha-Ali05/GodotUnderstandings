@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dsqrj3upoggry"]
+
+[ext_resource type="Script" uid="uid://bert55lfaqnut" path="res://enemies/enemy.gd" id="1_7frlh"]
+[ext_resource type="PackedScene" uid="uid://bjdxjc1iw6wtv" path="res://assets/mob/bat/bat_model.glb" id="1_fw1ev"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fw1ev"]
+radius = 0.5888672
+height = 1.1777344
+
+[node name="Enemy" type="CharacterBody3D" unique_id=2144013182]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("1_7frlh")
+
+[node name="bat_model" parent="." unique_id=61804960 instance=ExtResource("1_fw1ev")]
+
+[node name="Skeleton3D" parent="bat_model/Armature" parent_id_path=PackedInt32Array(61804960, 684673084) index="0" unique_id=2033023544]
+bones/0/position = Vector3(0, -0.012905112, 0)
+bones/1/rotation = Quaternion(0.07890957, 0.08353556, -0.6106593, 0.78351146)
+bones/2/rotation = Quaternion(-0.09531492, -0.034884125, 0.34389246, 0.9335075)
+bones/3/rotation = Quaternion(-0.18890233, -0.0011292676, 0.25315303, 0.94880366)
+bones/4/rotation = Quaternion(0.07890957, -0.08353556, 0.6106593, 0.78351146)
+bones/5/rotation = Quaternion(-0.09531492, 0.034884125, -0.34389246, 0.9335075)
+bones/6/rotation = Quaternion(-0.18890233, 0.0011292676, -0.25315303, 0.94880366)
+bones/7/position = Vector3(0.1309921, -0.22739176, -0.087851465)
+bones/7/rotation = Quaternion(0.26196837, 0.08345512, 0.26575127, 0.9240044)
+bones/8/rotation = Quaternion(2.8426307e-08, 0.5424415, 0.8400937, 2.0217614e-08)
+bones/10/position = Vector3(-0.1309921, -0.22739176, -0.087851465)
+bones/10/rotation = Quaternion(0.26196837, -0.083455116, -0.26575127, 0.9240044)
+bones/11/rotation = Quaternion(2.5226552e-08, 0.5424415, 0.8400937, 4.396322e-08)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=339402497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012817383, 0)
+shape = SubResource("CapsuleShape3D_fw1ev")
+
+[editable path="bat_model"]
