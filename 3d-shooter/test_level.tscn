@@ -35,5 +35,17 @@ size = Vector3(72, 1, 53)
 material = ExtResource("2_1c2mv")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=82543389]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 4, -9.5)
-size = Vector3(6, 7, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 4, -9.5)
+size = Vector3(4, 7, 4)
+material = ExtResource("2_1c2mv")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1311382285]
+transform = Transform3D(1, -3.090862e-08, -1.28027695e-08, 3.090862e-08, 0.70710677, 0.70710677, -1.28027695e-08, -0.70710677, 0.70710677, 12.5, 4, 1.5)
+size = Vector3(4, 1, 12)
+material = ExtResource("2_1c2mv")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1995214970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.5, 0)
+radius = 1.0
+height = 9.0
+material = ExtResource("2_1c2mv")
