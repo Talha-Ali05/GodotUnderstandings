@@ -2,10 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bert55lfaqnut" path="res://enemies/enemy.gd" id="1_7frlh"]
 [ext_resource type="PackedScene" uid="uid://bjdxjc1iw6wtv" path="res://assets/mob/bat/bat_model.glb" id="1_fw1ev"]
+[ext_resource type="Script" uid="uid://bmpr6l6kwf40o" path="res://Components/hurt_box.gd" id="3_orwns"]
+[ext_resource type="Script" uid="uid://04gndijhfv62" path="res://Components/health_system.gd" id="4_a6vjd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fw1ev"]
 radius = 0.5888672
 height = 1.1777344
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_orwns"]
+size = Vector3(1.5439453, 1, 0.5341797)
 
 [node name="Enemy" type="CharacterBody3D" unique_id=2144013182]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -31,5 +36,18 @@ bones/11/rotation = Quaternion(2.5226552e-08, 0.5424415, 0.8400937, 4.396322e-08
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=339402497]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012817383, 0)
 shape = SubResource("CapsuleShape3D_fw1ev")
+
+[node name="HurtBox" type="Area3D" parent="." unique_id=424130492]
+script = ExtResource("3_orwns")
+metadata/_custom_type_script = "uid://bmpr6l6kwf40o"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" unique_id=185833073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025634766, 0)
+shape = SubResource("BoxShape3D_orwns")
+debug_color = Color(0.22355375, 0.63925624, 5.7756904e-07, 0.41960785)
+
+[node name="HealthSystem" type="Node" parent="." unique_id=1801284046]
+script = ExtResource("4_a6vjd")
+metadata/_custom_type_script = "uid://04gndijhfv62"
 
 [editable path="bat_model"]

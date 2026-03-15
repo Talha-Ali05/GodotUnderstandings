@@ -1,22 +1,13 @@
 [gd_scene format=3 uid="uid://c1k8f40kc8vde"]
 
-[ext_resource type="PackedScene" uid="uid://csb5rxn1ymivg" path="res://assets/mob/spawner/spawner_model.glb" id="1_h7wyf"]
 [ext_resource type="Script" uid="uid://dn1nys2krlljx" path="res://enemies/bat_spawner.gd" id="1_xusmb"]
-[ext_resource type="Material" uid="uid://bh1ego7bi1olb" path="res://assets/mob/spawner/spawner_screen_material.tres" id="2_rlymb"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xusmb"]
+[ext_resource type="PackedScene" uid="uid://by0xdkugvwgnb" path="res://enemies/spawner_model.tscn" id="2_rlymb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rlymb"]
 radius = 1.0
 
 [node name="Bat Spawner" type="StaticBody3D" unique_id=583517729]
 script = ExtResource("1_xusmb")
-
-[node name="spawner_model" parent="." unique_id=2025244200 instance=ExtResource("1_h7wyf")]
-
-[node name="halo" parent="spawner_model" index="0" unique_id=924081002]
-material_override = ExtResource("2_rlymb")
-material_overlay = SubResource("ShaderMaterial_xusmb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1173395359]
 shape = SubResource("SphereShape3D_rlymb")
@@ -25,9 +16,9 @@ shape = SubResource("SphereShape3D_rlymb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6224899, 0)
 
 [node name="Timer" type="Timer" parent="." unique_id=54503406]
-wait_time = 5.0
+wait_time = 10.0
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="spawner_model" parent="." unique_id=2025244200 instance=ExtResource("2_rlymb")]
 
-[editable path="spawner_model"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

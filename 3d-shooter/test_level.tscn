@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cckbdxjfgrreb"]
+
+[ext_resource type="PackedScene" uid="uid://gbmpn7q4h6la" path="res://Player/player.tscn" id="1_gojnm"]
+[ext_resource type="Material" uid="uid://bjgavs2y5rlw" path="res://materials/test.tres" id="2_1c2mv"]
+
+[sub_resource type="Environment" id="Environment_1c2mv"]
+background_mode = 1
+background_color = Color(0.93573904, 0.43540835, 0.35828733, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72651106, 0.62274784, 0.5617414, 1)
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.83659464, 0.40154806, 0.318997, 1)
+fog_height = 0.2
+fog_height_density = 0.5
+
+[node name="TestLevel" type="Node3D" unique_id=699935526]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=979205929]
+environment = SubResource("Environment_1c2mv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2016471715]
+transform = Transform3D(-0.47092307, 0.18415383, 0.86273915, 0.7267953, 0.63528526, 0.2611154, -0.50000006, 0.75000006, -0.4330126, 0, 38.69225, 0)
+shadow_enabled = true
+metadata/_edit_group_ = true
+
+[node name="Player" parent="." unique_id=1359448494 instance=ExtResource("1_gojnm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1201184877]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=899554484]
+size = Vector3(72, 1, 53)
+material = ExtResource("2_1c2mv")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=82543389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 4, -9.5)
+size = Vector3(6, 7, 4)

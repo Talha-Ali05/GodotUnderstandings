@@ -2,9 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://yydjqi0nwad5" path="res://bullets/projectile_model.tscn" id="1_tnxwn"]
 [ext_resource type="Script" uid="uid://cqn8cfhjswf5j" path="res://bullets/bullet.gd" id="1_wo3kc"]
+[ext_resource type="Script" uid="uid://bv4rkbpgg8wwp" path="res://Components/hit_box.gd" id="3_ascq4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tnxwn"]
 radius = 0.35281375
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xuifw"]
+radius = 0.31950757
 
 [node name="Bullet" type="Area3D" unique_id=220422397]
 top_level = true
@@ -15,3 +19,12 @@ shape = SubResource("SphereShape3D_tnxwn")
 
 [node name="projectile_model" parent="." unique_id=1120046165 instance=ExtResource("1_tnxwn")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="HitBox" type="Area3D" parent="." unique_id=514317937]
+script = ExtResource("3_ascq4")
+damage = 50
+metadata/_custom_type_script = "uid://bv4rkbpgg8wwp"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" unique_id=813571201]
+shape = SubResource("SphereShape3D_xuifw")
+debug_color = Color(0.9999998, 0, 0.10509225, 0.41960785)

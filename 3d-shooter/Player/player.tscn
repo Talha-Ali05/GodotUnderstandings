@@ -42,3 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_btcbx")
 expand_mode = 1
+
+[node name="coyoteTime" type="Timer" parent="." unique_id=1667324184]
+wait_time = 0.2
+one_shot = true
