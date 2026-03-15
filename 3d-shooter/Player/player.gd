@@ -2,10 +2,14 @@ extends CharacterBody3D
 
 @onready var camera_3d: Camera3D = $Camera3D
 @export var speed = 6.5
-@export var sprint_speed = 10
+@export var sprint_speed = 15
 var base_speed = speed
 @export var acce = 25
 @export var fric = 30
+
+
+@onready var bullet_system: Node = %Bullet_system
+@onready var bullets: Label = $CanvasLayer/Bullets
 
 
 var can_jump = true
@@ -31,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 		speed = sprint_speed
 	else:
 		speed = base_speed
-	
+	show_bullets()
 	
 	move_and_slide()
 	was_on_floor = is_on_floor()
@@ -50,6 +54,12 @@ func movement_system(_delta):
 		velocity.z= move_toward(velocity.z,0,fric * _delta)
 
 
+func show_bullets():
+	bullets.text = str(bullet_system.current_bullets)+"/*"
+	if bullet_system.current_bullets <=0:
+		bullets.add_theme_color_override("font_color","RED")
+	else:
+		bullets.add_theme_color_override("font_color","GREEN")
 
 func jump_system (_delta):
 	if was_on_floor and not is_on_floor():
