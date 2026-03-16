@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dln0ysbnlvw4c"]
+
+[ext_resource type="Script" uid="uid://bpafddaidegm" path="res://assets/level/debug_menu.gd" id="1_1l4b6"]
+
+[node name="Debug_menu" type="Control" unique_id=2133041081 node_paths=PackedStringArray("player")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1l4b6")
+player = NodePath("")
+
+[node name="FPS" type="Label" parent="." unique_id=890839116]
+layout_mode = 0
+offset_right = 71.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "FPS :"

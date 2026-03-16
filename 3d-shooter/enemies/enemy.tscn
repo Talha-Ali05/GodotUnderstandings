@@ -5,9 +5,8 @@
 [ext_resource type="Script" uid="uid://bmpr6l6kwf40o" path="res://Components/hurt_box.gd" id="3_orwns"]
 [ext_resource type="Script" uid="uid://04gndijhfv62" path="res://Components/health_system.gd" id="4_a6vjd"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fw1ev"]
-radius = 0.5888672
-height = 1.1777344
+[sub_resource type="BoxShape3D" id="BoxShape3D_a6vjd"]
+size = Vector3(1.4802246, 0.81921387, 0.47436523)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_orwns"]
 size = Vector3(1.5439453, 1, 0.5341797)
@@ -34,10 +33,12 @@ bones/10/rotation = Quaternion(0.26196837, -0.083455116, -0.26575127, 0.9240044)
 bones/11/rotation = Quaternion(2.5226552e-08, 0.5424415, 0.8400937, 4.396322e-08)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=339402497]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012817383, 0)
-shape = SubResource("CapsuleShape3D_fw1ev")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.046081543, 0)
+shape = SubResource("BoxShape3D_a6vjd")
 
 [node name="HurtBox" type="Area3D" parent="." unique_id=424130492]
+collision_layer = 4
+collision_mask = 16
 script = ExtResource("3_orwns")
 metadata/_custom_type_script = "uid://bmpr6l6kwf40o"
 

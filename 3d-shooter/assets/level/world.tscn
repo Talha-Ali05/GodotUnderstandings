@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://gbmpn7q4h6la" path="res://Player/player.tscn" id="2_lluvm"]
 [ext_resource type="Material" uid="uid://bjgavs2y5rlw" path="res://materials/test.tres" id="2_m005s"]
 [ext_resource type="PackedScene" uid="uid://c1k8f40kc8vde" path="res://enemies/bat_spawner.tscn" id="4_6e2u3"]
-[ext_resource type="Script" uid="uid://bpafddaidegm" path="res://assets/level/debug_menu.gd" id="4_m005s"]
+[ext_resource type="PackedScene" uid="uid://dln0ysbnlvw4c" path="res://assets/level/debug_menu.tscn" id="5_m005s"]
 
 [sub_resource type="Environment" id="Environment_5brps"]
 background_mode = 1
@@ -145,18 +145,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.29165, 7, 15.179497)
 [node name="Bat Spawner5" parent="Spawners" unique_id=1387173158 instance=ExtResource("4_6e2u3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.899345, 13, 31.696156)
 
-[node name="Debug_menu" type="Control" parent="." unique_id=1553258549 node_paths=PackedStringArray("player")]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("4_m005s")
-player = NodePath("../Player")
-
-[node name="FPS" type="Label" parent="Debug_menu" unique_id=1497602694]
-layout_mode = 0
-offset_right = 71.0
-offset_bottom = 45.0
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "FPS :"
+[node name="Debug_menu" parent="." unique_id=2133041081 instance=ExtResource("5_m005s")]

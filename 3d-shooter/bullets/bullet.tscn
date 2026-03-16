@@ -21,6 +21,8 @@ shape = SubResource("SphereShape3D_tnxwn")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="HitBox" type="Area3D" parent="." unique_id=514317937]
+collision_layer = 16
+collision_mask = 4
 script = ExtResource("3_ascq4")
 damage = 50
 metadata/_custom_type_script = "uid://bv4rkbpgg8wwp"

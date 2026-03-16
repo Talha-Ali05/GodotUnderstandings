@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://gbmpn7q4h6la" path="res://Player/player.tscn" id="1_gojnm"]
 [ext_resource type="Material" uid="uid://bjgavs2y5rlw" path="res://materials/test.tres" id="2_1c2mv"]
+[ext_resource type="PackedScene" uid="uid://cogpsuhn1yvgs" path="res://damage/damage_zone.tscn" id="3_f7g2b"]
 
 [sub_resource type="Environment" id="Environment_1c2mv"]
 background_mode = 1
@@ -9,7 +10,6 @@ background_color = Color(0.93573904, 0.43540835, 0.35828733, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.72651106, 0.62274784, 0.5617414, 1)
 tonemap_mode = 2
-fog_enabled = true
 fog_light_color = Color(0.83659464, 0.40154806, 0.318997, 1)
 fog_height = 0.2
 fog_height_density = 0.5
@@ -35,6 +35,31 @@ size = Vector3(72, 1, 53)
 material = ExtResource("2_1c2mv")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=82543389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1, -1.5)
+size = Vector3(4, 1, 4)
+material = ExtResource("2_1c2mv")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1565037747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2, -1.5)
+size = Vector3(4, 1, 4)
+material = ExtResource("2_1c2mv")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=379871256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 3, -1.5)
+size = Vector3(4, 1, 4)
+material = ExtResource("2_1c2mv")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1334041641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4, -1.5)
+size = Vector3(4, 1, 4)
+material = ExtResource("2_1c2mv")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D" unique_id=227803486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 5, -1.5)
+size = Vector3(4, 1, 4)
+material = ExtResource("2_1c2mv")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=415089742]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 4, -9.5)
 size = Vector3(4, 7, 4)
 material = ExtResource("2_1c2mv")
@@ -49,3 +74,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.5, 0)
 radius = 1.0
 height = 9.0
 material = ExtResource("2_1c2mv")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGCombiner3D" unique_id=837817012]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 12, 11, 9)
+inner_radius = 3.0
+outer_radius = 4.0
+material = ExtResource("2_1c2mv")
+
+[node name="Damage_Zone" parent="." unique_id=2054845223 instance=ExtResource("3_f7g2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 6)
