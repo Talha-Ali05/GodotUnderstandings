@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bert55lfaqnut" path="res://enemies/enemy.gd" id="1_7frlh"]
 [ext_resource type="PackedScene" uid="uid://bjdxjc1iw6wtv" path="res://assets/mob/bat/bat_model.glb" id="1_fw1ev"]
-[ext_resource type="Script" uid="uid://bmpr6l6kwf40o" path="res://Components/hurt_box.gd" id="3_orwns"]
-[ext_resource type="Script" uid="uid://04gndijhfv62" path="res://Components/health_system.gd" id="4_a6vjd"]
+[ext_resource type="Script" uid="uid://bmpr6l6kwf40o" path="res://components/hurt_box.gd" id="3_orwns"]
+[ext_resource type="Script" uid="uid://04gndijhfv62" path="res://components/health_system.gd" id="4_a6vjd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a6vjd"]
 size = Vector3(1.4802246, 0.81921387, 0.47436523)

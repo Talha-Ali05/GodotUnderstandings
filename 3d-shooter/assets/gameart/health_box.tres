@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cwu35qgawrukr"]
+
+[ext_resource type="Texture2D" uid="uid://bt5w0iakdgasd" path="res://assets/gameart/healt_box_.png" id="1_x6sk1"]
+
+[resource]
+albedo_texture = ExtResource("1_x6sk1")
+emission_enabled = true
+emission = Color(0.047325186, 0.6304676, 0.3630711, 1)

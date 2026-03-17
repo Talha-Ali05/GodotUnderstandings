@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dyl82l68dbt3h"]
+
+[ext_resource type="Script" uid="uid://c51ari2bc8ma5" path="res://components/collectables.gd" id="1_hfdbt"]
+
+[node name="Collectables" type="Area3D" unique_id=1716111104]
+script = ExtResource("1_hfdbt")

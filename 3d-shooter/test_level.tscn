@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://gbmpn7q4h6la" path="res://Player/player.tscn" id="1_gojnm"]
 [ext_resource type="Material" uid="uid://bjgavs2y5rlw" path="res://materials/test.tres" id="2_1c2mv"]
 [ext_resource type="PackedScene" uid="uid://cogpsuhn1yvgs" path="res://damage/damage_zone.tscn" id="3_f7g2b"]
+[ext_resource type="PackedScene" uid="uid://d0ifia2qnx24i" path="res://collectables/heal_box.tscn" id="4_4ptq8"]
 
 [sub_resource type="Environment" id="Environment_1c2mv"]
 background_mode = 1
@@ -83,3 +84,6 @@ material = ExtResource("2_1c2mv")
 
 [node name="Damage_Zone" parent="." unique_id=2054845223 instance=ExtResource("3_f7g2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 6)
+
+[node name="heal_box" parent="." unique_id=2067271826 instance=ExtResource("4_4ptq8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)

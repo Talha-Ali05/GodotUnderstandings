@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 @export var speed = 9.0
 @export var sprint_speed = 12.0
@@ -31,6 +31,7 @@ var was_on_floor:bool
 var original_cam_pos
 
 func _ready() -> void:
+	gCollectable.collected.connect(collect_system)
 	original_cam_pos = camera_3d.transform.origin
 	health_system.die.connect(game_over)
 	health_bar.max_value = health_system.max_health
@@ -111,6 +112,8 @@ func get_hurt(damage,hitbox):
 	print(health_system.health)
 	health_system.take_damage(hitbox.damage)
 
+func collect_system(value):
+	health_system.heal(value)
 
 func head_bob(new_time) ->Vector3:
 	var pos:= Vector3.ZERO

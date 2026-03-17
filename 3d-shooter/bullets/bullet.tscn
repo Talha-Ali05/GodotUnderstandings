@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://yydjqi0nwad5" path="res://bullets/projectile_model.tscn" id="1_tnxwn"]
 [ext_resource type="Script" uid="uid://cqn8cfhjswf5j" path="res://bullets/bullet.gd" id="1_wo3kc"]
-[ext_resource type="Script" uid="uid://bv4rkbpgg8wwp" path="res://Components/hit_box.gd" id="3_ascq4"]
+[ext_resource type="Script" uid="uid://bv4rkbpgg8wwp" path="res://components/hit_box.gd" id="3_ascq4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tnxwn"]
 radius = 0.35281375

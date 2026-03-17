@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cogpsuhn1yvgs"]
 
 [ext_resource type="Texture2D" uid="uid://ms8txh2damj2" path="res://assets/level/checkboard.png" id="1_37d3u"]
-[ext_resource type="Script" uid="uid://bv4rkbpgg8wwp" path="res://Components/hit_box.gd" id="1_yyhdx"]
+[ext_resource type="Script" uid="uid://bv4rkbpgg8wwp" path="res://components/hit_box.gd" id="1_yyhdx"]
 [ext_resource type="Script" uid="uid://c47ng2782v5kq" path="res://damage/timer.gd" id="3_r4tue"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yyhdx"]
