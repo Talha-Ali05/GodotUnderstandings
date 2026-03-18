@@ -18,6 +18,8 @@ var t_bob:float
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var bullet_system: Node = %Bullet_system
 @onready var bullets: Label = $CanvasLayer/Bullets
+@onready var gun_cam: Camera3D =$Camera3D/SubViewportContainer/SubViewport/GunCam
+
 
 
 @onready var hurt_box: HurtBox = $HurtBox
@@ -31,6 +33,8 @@ var was_on_floor:bool
 var original_cam_pos
 
 func _ready() -> void:
+	camera_3d.cull_mask = 1
+	gun_cam.cull_mask = 2
 	gCollectable.collected.connect(collect_system)
 	original_cam_pos = camera_3d.transform.origin
 	health_system.die.connect(game_over)
@@ -64,6 +68,7 @@ func _physics_process(_delta: float) -> void:
 	var velo_clam = clamp(velocity.length(),.5,sprint_speed*2)
 	var target_fov = base_fov + (fov_change * velo_clam)
 	camera_3d.fov = lerp(camera_3d.fov,target_fov,0.5)
+	gun_cam.fov = lerp(camera_3d.fov,target_fov,0.5)
 	
 	
 	

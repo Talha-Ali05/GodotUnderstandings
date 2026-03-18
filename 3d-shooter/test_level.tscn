@@ -22,6 +22,7 @@ environment = SubResource("Environment_1c2mv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2016471715]
 transform = Transform3D(-0.47092307, 0.18415383, 0.86273915, 0.7267953, 0.63528526, 0.2611154, -0.50000006, 0.75000006, -0.4330126, 0, 38.69225, 0)
+layers = 3
 shadow_enabled = true
 metadata/_edit_group_ = true
 

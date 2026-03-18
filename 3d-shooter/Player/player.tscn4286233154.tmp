@@ -50,22 +50,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53, -0.163)
 cull_mask = 1048574
 current = true
 
-[node name="gun_model" parent="Camera3D/SubViewportContainer/SubViewport/GunCam" unique_id=1232794932 node_paths=PackedStringArray("parent", "shotting_point") instance=ExtResource("1_l8h54")]
+[node name="gun_model" parent="Camera3D/SubViewportContainer/SubViewport/GunCam" unique_id=1232794932 instance=ExtResource("1_l8h54")]
 unique_name_in_owner = true
 transform = Transform3D(-0.51569915, 0, -4.508385e-08, 0, 0.51569915, 0, 4.508385e-08, 0, -0.51569915, 0.3623354, -0.23727584, -0.8742045)
 script = ExtResource("3_gwnis")
-parent = NodePath("../../../../..")
-shotting_point = NodePath("../../../../Marker3D")
 
-[node name="BlueGun" parent="Camera3D/SubViewportContainer/SubViewport/GunCam/gun_model" index="0" unique_id=1210041167]
-layers = 2
+[node name="Marker3D" type="Marker3D" parent="Camera3D/SubViewportContainer/SubViewport/GunCam/gun_model" unique_id=1294227407]
+transform = Transform3D(0.9999996, 0, -7.1054274e-15, 0, 0.9999996, 0, 7.1054274e-15, 0, 0.9999996, -5.9604645e-08, 0, 0.6249422)
 
 [node name="ShootTimer" type="Timer" parent="Camera3D/SubViewportContainer/SubViewport/GunCam/gun_model" unique_id=1417459680]
 wait_time = 0.2
 one_shot = true
-
-[node name="Marker3D" type="Marker3D" parent="Camera3D" unique_id=1294227407]
-transform = Transform3D(-0.5156989, 0, -4.508383e-08, 0, 0.5156989, 0, 4.508383e-08, 0, -0.5156989, 0.3623354, -0.23749542, -1.1966543)
 
 [node name="coyoteTime" type="Timer" parent="." unique_id=1667324184]
 wait_time = 0.2
@@ -133,5 +128,3 @@ script = ExtResource("7_vtle1")
 metadata/_custom_type_script = "uid://04gndijhfv62"
 
 [node name="Debug_menu" parent="." unique_id=2133041081 instance=ExtResource("8_od3ui")]
-
-[editable path="Camera3D/SubViewportContainer/SubViewport/GunCam/gun_model"]
