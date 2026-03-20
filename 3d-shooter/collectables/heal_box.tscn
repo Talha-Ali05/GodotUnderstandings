@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d0ifia2qnx24i"]
 
-[ext_resource type="Script" uid="uid://c51ari2bc8ma5" path="res://components/collectables.gd" id="1_2buj4"]
+[ext_resource type="Script" uid="uid://drsyr56rtxyfu" path="res://collectables/heal_box.gd" id="1_auk6y"]
 [ext_resource type="PackedScene" uid="uid://cwkw0d5356ret" path="res://collectables/health_box.tscn" id="2_auk6y"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_auk6y"]
@@ -9,7 +9,7 @@ radius = 1.2763371
 [node name="heal_box" type="Area3D" unique_id=2067271826]
 collision_layer = 9
 collision_mask = 2
-script = ExtResource("1_2buj4")
+script = ExtResource("1_auk6y")
 metadata/_custom_type_script = "uid://c51ari2bc8ma5"
 
 [node name="health_box" parent="." unique_id=1065111325 instance=ExtResource("2_auk6y")]

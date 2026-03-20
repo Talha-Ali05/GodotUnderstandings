@@ -12,8 +12,75 @@
 [ext_resource type="PackedScene" uid="uid://dln0ysbnlvw4c" path="res://assets/level/debug_menu.tscn" id="8_od3ui"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvfyp"]
+radius = 0.7832031
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fhl08"]
+
+[sub_resource type="Animation" id="Animation_x3vf3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/gun_model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.3623354, -0.23749542, -0.5564699)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/gun_model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.1415925, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5htga"]
+resource_name = "reload"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/gun_model:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -3.1415925, 0), Vector3(6.2831855, -3.1415927, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_apopc"]
+resource_name = "shoot"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/gun_model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.3623354, -0.23749542, -0.5564699), Vector3(0.3623354, -0.23749542, -0.49212164), Vector3(0.3623354, -0.23749542, -0.5564699)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5htga"]
+_data = {
+&"RESET": SubResource("Animation_x3vf3"),
+&"reload": SubResource("Animation_5htga"),
+&"shoot": SubResource("Animation_apopc")
+}
 
 [node name="Player" type="CharacterBody3D" unique_id=1359448494 groups=["player"]]
 collision_layer = 3
@@ -22,7 +89,7 @@ script = ExtResource("1_4ntmi")
 
 [node name="gun_mover" type="RayCast3D" parent="." unique_id=1317032497]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 0)
-target_position = Vector3(0, -1.4, 0)
+target_position = Vector3(0, -1.5, 0)
 script = ExtResource("2_x3vf3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2005689456]
@@ -36,36 +103,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5302196, -0.16283238)
 cull_mask = 1048573
 current = true
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Camera3D" unique_id=1230270627]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SubViewport" type="SubViewport" parent="Camera3D/SubViewportContainer" unique_id=1592849509]
-transparent_bg = true
-size = Vector2i(1920, 1080)
-render_target_update_mode = 4
-
-[node name="GunCam" type="Camera3D" parent="Camera3D/SubViewportContainer/SubViewport" unique_id=1756972843]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53, -0.163)
-cull_mask = 1048574
-current = true
-
-[node name="gun_model" parent="Camera3D/SubViewportContainer/SubViewport/GunCam" unique_id=1232794932 node_paths=PackedStringArray("parent", "shotting_point") instance=ExtResource("1_l8h54")]
+[node name="gun_model" parent="Camera3D" unique_id=1232794932 node_paths=PackedStringArray("parent", "shotting_point") instance=ExtResource("1_l8h54")]
 unique_name_in_owner = true
-transform = Transform3D(-0.51569915, 0, -4.508385e-08, 0, 0.51569915, 0, 4.508385e-08, 0, -0.51569915, 0.3623354, -0.23727584, -0.8742045)
+transform = Transform3D(-0.51569915, 0, -7.786841e-08, 0, 0.51569915, 0, 7.786841e-08, 0, -0.51569915, 0.3623354, -0.23749542, -0.5564699)
 script = ExtResource("3_gwnis")
-parent = NodePath("../../../../..")
-shotting_point = NodePath("../../../../Marker3D")
+parent = NodePath("../..")
+shotting_point = NodePath("Marker3D")
 
-[node name="BlueGun" parent="Camera3D/SubViewportContainer/SubViewport/GunCam/gun_model" index="0" unique_id=1210041167]
-layers = 2
+[node name="Marker3D" type="Marker3D" parent="Camera3D/gun_model" unique_id=1294227407]
+transform = Transform3D(0.99999946, 0, -7.1054274e-15, 0, 0.99999946, 0, 7.1054274e-15, 0, 0.99999946, -5.9604645e-08, 0, 0.62494206)
 
-[node name="ShootTimer" type="Timer" parent="Camera3D/SubViewportContainer/SubViewport/GunCam/gun_model" unique_id=1417459680]
+[node name="ShootTimer" type="Timer" parent="Camera3D/gun_model" unique_id=1417459680]
 wait_time = 0.2
 one_shot = true
-
-[node name="Marker3D" type="Marker3D" parent="Camera3D" unique_id=1294227407]
-transform = Transform3D(-0.5156989, 0, -4.508383e-08, 0, 0.5156989, 0, 4.508383e-08, 0, -0.5156989, 0.3623354, -0.23749542, -1.1966543)
 
 [node name="coyoteTime" type="Timer" parent="." unique_id=1667324184]
 wait_time = 0.2
@@ -134,4 +184,7 @@ metadata/_custom_type_script = "uid://04gndijhfv62"
 
 [node name="Debug_menu" parent="." unique_id=2133041081 instance=ExtResource("8_od3ui")]
 
-[editable path="Camera3D/SubViewportContainer/SubViewport/GunCam/gun_model"]
+[node name="GunAnimations" type="AnimationPlayer" parent="." unique_id=325352592]
+libraries/ = SubResource("AnimationLibrary_5htga")
+
+[connection signal="animation_finished" from="GunAnimations" to="Bullet_system" method="_on_gun_animations_animation_finished"]
