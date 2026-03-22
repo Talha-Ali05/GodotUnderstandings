@@ -20,12 +20,6 @@ fog_height_density = 0.5
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=979205929]
 environment = SubResource("Environment_1c2mv")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2016471715]
-transform = Transform3D(-0.47092307, 0.18415383, 0.86273915, 0.7267953, 0.63528526, 0.2611154, -0.50000006, 0.75000006, -0.4330126, 0, 38.69225, 0)
-layers = 3
-shadow_enabled = true
-metadata/_edit_group_ = true
-
 [node name="Player" parent="." unique_id=1359448494 instance=ExtResource("1_gojnm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
@@ -88,3 +82,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 6)
 
 [node name="CollectableSpawner" parent="." unique_id=1937056969 instance=ExtResource("4_4ptq8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55241835, 3.7778273)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1768863293]
+transform = Transform3D(-0.47092307, 0.18415383, 0.86273915, 0.7267953, 0.63528526, 0.2611154, -0.50000006, 0.75000006, -0.4330126, 0, 38.69225, 0)
+layers = 3
+shadow_enabled = true
+metadata/_edit_group_ = true

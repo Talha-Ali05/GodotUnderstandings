@@ -111,7 +111,7 @@ parent = NodePath("../..")
 shooting_point = NodePath("Marker3D")
 
 [node name="Marker3D" type="Marker3D" parent="Camera3D/gun" unique_id=1294227407]
-transform = Transform3D(0.9999996, 0, -1.4210855e-14, 0, 0.9999996, 0, 1.4210855e-14, 0, 0.9999996, 0, 0.72589207, 1.1492631)
+transform = Transform3D(0.9999996, 0, -1.4210855e-14, 0, 0.9999996, 0, 1.4210855e-14, 0, 0.9999996, 0, 0.7503073, 1.1492631)
 
 [node name="ShootTimer" type="Timer" parent="Camera3D/gun" unique_id=1417459680]
 wait_time = 0.2

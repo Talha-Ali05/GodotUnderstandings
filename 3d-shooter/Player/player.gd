@@ -80,8 +80,9 @@ func movement_system(_delta):
 		velocity.x= speed*direction.x
 		velocity.z= speed*direction.z
 	else:
-		velocity.x= move_toward(velocity.x,0,fric * _delta)
-		velocity.z= move_toward(velocity.z,0,fric * _delta)
+		var current_fric = fric if is_on_floor() else 8.0
+		velocity.x= move_toward(velocity.x,0,current_fric * _delta)
+		velocity.z= move_toward(velocity.z,0,current_fric * _delta)
 
 
 func show_bullets():
@@ -95,7 +96,7 @@ func jump_system (_delta):
 	if was_on_floor and not is_on_floor():
 		$coyoteTime.start()
 	velocity.y -= 35*_delta
-	velocity.y = clamp(velocity.y,-100,20)
+	velocity.y = clamp(velocity.y,-100,50)
 	if is_on_floor():
 		can_jump = true
 	if Input.is_action_just_pressed("jump") and can_jump:
