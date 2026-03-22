@@ -5,8 +5,8 @@ var speed = 70.0
 var max_range := 50.0
 var travel_distance = 0
 
-func setup(parent:Node3D):
-	global_transform = parent.global_transform
+func setup(parent:Marker3D):
+	self.global_transform = parent.global_transform
 
 func _physics_process(delta: float) -> void:
 	position += transform.basis.z * speed * delta

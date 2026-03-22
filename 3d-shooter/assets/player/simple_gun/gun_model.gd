@@ -2,7 +2,7 @@ extends Node3D
 
 const BULLET = preload("uid://dxm6dg7ugwqql")
 @export var parent:Node3D
-@export var shotting_point:Marker3D
+@export var shooting_point:Marker3D
 
 @onready var bullet_system: Node = %Bullet_system
 
@@ -18,10 +18,10 @@ func _process(_delta: float) -> void:
 
 func shoot(new_parent:Node3D,recoil_speed):
 	var new_bullet = BULLET.instantiate()
-	new_bullet.setup(shotting_point)
+	new_bullet.setup(shooting_point)
 	add_child(new_bullet)
 	if global_rotation_degrees.x > 15:
-		var recoil_dir = -shotting_point.global_transform.basis.z
+		var recoil_dir = -shooting_point.global_transform.basis.z
 		new_parent.velocity = recoil_dir*recoil_speed
 	else:
 		$"../../GunAnimations".play("shoot")

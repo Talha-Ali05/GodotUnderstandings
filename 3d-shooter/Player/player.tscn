@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://gbmpn7q4h6la"]
 
 [ext_resource type="Script" uid="uid://dwkl0lyyhay6u" path="res://Player/player.gd" id="1_4ntmi"]
-[ext_resource type="PackedScene" uid="uid://dbkswj1ylg2gy" path="res://assets/player/simple_gun/gun_model.glb" id="1_l8h54"]
 [ext_resource type="Script" uid="uid://cea86emyp854y" path="res://Player/gun_mover.gd" id="2_x3vf3"]
 [ext_resource type="Texture2D" uid="uid://bpfhj5b8yjtod" path="res://assets/player/reticle.png" id="3_btcbx"]
 [ext_resource type="Script" uid="uid://chjl88ekq1duf" path="res://assets/player/simple_gun/gun_model.gd" id="3_gwnis"]
+[ext_resource type="PackedScene" uid="uid://c8sshmnls6wgb" path="res://assets/gameart/gun.blend" id="3_x3vf3"]
 [ext_resource type="Script" uid="uid://b77pjg7kfkx8d" path="res://Player/bullet_system.gd" id="5_k53q1"]
 [ext_resource type="Script" uid="uid://dthw36hsue8j7" path="res://Player/health_bar.gd" id="6_00tjw"]
 [ext_resource type="Script" uid="uid://bmpr6l6kwf40o" path="res://components/hurt_box.gd" id="6_fhl08"]
@@ -21,26 +21,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/gun_model:position")
+tracks/0/path = NodePath("Camera3D/gun:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.3623354, -0.23749542, -0.5564699)]
+"values": [Vector3(0, -3.1415925, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D/gun_model:rotation")
+tracks/1/path = NodePath("Camera3D/gun:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -3.1415925, 0)]
+"values": [Vector3(0.3623354, -0.4529122, -0.7861154)]
 }
 
 [sub_resource type="Animation" id="Animation_5htga"]
@@ -49,7 +49,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/gun_model:rotation")
+tracks/0/path = NodePath("Camera3D/gun:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -65,14 +65,14 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/gun_model:position")
+tracks/0/path = NodePath("Camera3D/gun:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.1),
+"times": PackedFloat32Array(0, 0.05, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.3623354, -0.23749542, -0.5564699), Vector3(0.3623354, -0.23749542, -0.49212164), Vector3(0.3623354, -0.23749542, -0.5564699)]
+"values": [Vector3(0.3623354, -0.4529122, -0.7861154), Vector3(0.3623354, -0.4529122, -0.6573189), Vector3(0.3623354, -0.4529122, -0.7861154)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5htga"]
@@ -103,17 +103,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5302196, -0.16283238)
 cull_mask = 1048573
 current = true
 
-[node name="gun_model" parent="Camera3D" unique_id=1232794932 node_paths=PackedStringArray("parent", "shotting_point") instance=ExtResource("1_l8h54")]
+[node name="gun" parent="Camera3D" unique_id=769039859 node_paths=PackedStringArray("parent", "shooting_point") instance=ExtResource("3_x3vf3")]
 unique_name_in_owner = true
-transform = Transform3D(-0.51569915, 0, -7.786841e-08, 0, 0.51569915, 0, 7.786841e-08, 0, -0.51569915, 0.3623354, -0.23749542, -0.5564699)
+transform = Transform3D(-0.5156991, 0, -7.78684e-08, 0, 0.5156991, 0, 7.78684e-08, 0, -0.5156991, 0.3623354, -0.4529122, -0.7861154)
 script = ExtResource("3_gwnis")
 parent = NodePath("../..")
-shotting_point = NodePath("Marker3D")
+shooting_point = NodePath("Marker3D")
 
-[node name="Marker3D" type="Marker3D" parent="Camera3D/gun_model" unique_id=1294227407]
-transform = Transform3D(0.99999946, 0, -7.1054274e-15, 0, 0.99999946, 0, 7.1054274e-15, 0, 0.99999946, -5.9604645e-08, 0, 0.62494206)
+[node name="Marker3D" type="Marker3D" parent="Camera3D/gun" unique_id=1294227407]
+transform = Transform3D(0.9999996, 0, -1.4210855e-14, 0, 0.9999996, 0, 1.4210855e-14, 0, 0.9999996, 0, 0.72589207, 1.1492631)
 
-[node name="ShootTimer" type="Timer" parent="Camera3D/gun_model" unique_id=1417459680]
+[node name="ShootTimer" type="Timer" parent="Camera3D/gun" unique_id=1417459680]
 wait_time = 0.2
 one_shot = true
 
