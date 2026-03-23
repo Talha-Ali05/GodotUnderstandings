@@ -31,6 +31,12 @@ window/stretch/mode="viewport"
 
 player=""
 
+[importer_defaults]
+
+animation_library={
+&"blender/nodes/visible": 1
+}
+
 [input]
 
 move_left={

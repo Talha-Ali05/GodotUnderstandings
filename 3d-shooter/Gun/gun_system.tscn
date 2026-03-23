@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cxkhv22lunjow"]
+
+[ext_resource type="Script" uid="uid://5726q50k5frg" path="res://Gun/gun_system.gd" id="1_p5gw0"]
+[ext_resource type="Script" uid="uid://b77pjg7kfkx8d" path="res://Player/bullet_system.gd" id="2_jwpg4"]
+[ext_resource type="Resource" uid="uid://dwdrco1jv8prf" path="res://Gun/gun_data/Pistol.tres" id="2_nfubc"]
+
+[node name="GunSystem" type="Node3D" unique_id=863837033]
+script = ExtResource("1_p5gw0")
+gun = ExtResource("2_nfubc")
+
+[node name="BulletSystem" type="Node" parent="." unique_id=656934513]
+script = ExtResource("2_jwpg4")
+max_capacity = 30
+metadata/_custom_type_script = "uid://b77pjg7kfkx8d"
+
+[node name="Marker" type="Marker3D" parent="." unique_id=1720883807]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.0888197, -0.7009093, -0.21377397)
+
+[node name="Shooting_point" type="Marker3D" parent="." unique_id=229506674]
+transform = Transform3D(-0.51569885, 0, -7.786836e-08, 0, 0.51569885, 0, 7.786836e-08, 0, -0.51569885, 0.36233532, -0.06597948, -1.3787893)
+gizmo_extents = 0.0
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1542962366]
+one_shot = true

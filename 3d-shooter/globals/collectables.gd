@@ -3,5 +3,5 @@ extends Node
 var collectableslist =["health"]
 
 var collectables = {
-	"health":preload("res://collectables/heal_box.tscn")
+	"health":preload("res://components/collectables/heal_box.tscn")
 }

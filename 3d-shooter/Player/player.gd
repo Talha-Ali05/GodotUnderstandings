@@ -16,7 +16,6 @@ var time:float
 var t_bob:float
 
 @onready var camera_3d: Camera3D = $Camera3D
-@onready var bullet_system: Node = %Bullet_system
 @onready var bullets: Label = $CanvasLayer/Bullets
 
 
@@ -57,7 +56,6 @@ func _physics_process(_delta: float) -> void:
 		speed = sprint_speed
 	else:
 		speed = base_speed
-	show_bullets()
 	t_bob = time * velocity.length() * float(is_on_floor())
 	camera_3d.transform.origin = original_cam_pos + head_bob(t_bob)
 	
@@ -84,13 +82,6 @@ func movement_system(_delta):
 		velocity.x= move_toward(velocity.x,0,current_fric * _delta)
 		velocity.z= move_toward(velocity.z,0,current_fric * _delta)
 
-
-func show_bullets():
-	bullets.text = str(bullet_system.current_bullets)+"/*"
-	if bullet_system.current_bullets <=0:
-		bullets.add_theme_color_override("font_color","RED")
-	else:
-		bullets.add_theme_color_override("font_color","GREEN")
 
 func jump_system (_delta):
 	if was_on_floor and not is_on_floor():

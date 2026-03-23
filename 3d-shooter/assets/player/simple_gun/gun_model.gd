@@ -20,8 +20,7 @@ func shoot(new_parent:Node3D,recoil_speed):
 	var new_bullet = BULLET.instantiate()
 	new_bullet.setup(shooting_point)
 	add_child(new_bullet)
-	if global_rotation_degrees.x > 30:
-		var recoil_dir = -shooting_point.global_transform.basis.z
-		new_parent.velocity += recoil_dir*recoil_speed
+	var recoil_dir = -shooting_point.global_transform.basis.z
+	new_parent.velocity += recoil_dir*recoil_speed
 	$"../../GunAnimations".play("shoot")
 	$ShootTimer.start()

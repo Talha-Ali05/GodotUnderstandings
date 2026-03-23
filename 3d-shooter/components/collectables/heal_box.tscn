@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d0ifia2qnx24i"]
 
-[ext_resource type="Script" uid="uid://drsyr56rtxyfu" path="res://collectables/heal_box.gd" id="1_auk6y"]
-[ext_resource type="PackedScene" uid="uid://cwkw0d5356ret" path="res://collectables/health_box.tscn" id="2_auk6y"]
+[ext_resource type="Script" uid="uid://drsyr56rtxyfu" path="res://components/collectables/heal_box.gd" id="1_auk6y"]
+[ext_resource type="PackedScene" uid="uid://cwkw0d5356ret" path="res://components/collectables/health_box.tscn" id="2_auk6y"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_auk6y"]
 radius = 1.2763371

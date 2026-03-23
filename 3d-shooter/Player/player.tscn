@@ -3,9 +3,7 @@
 [ext_resource type="Script" uid="uid://dwkl0lyyhay6u" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://cea86emyp854y" path="res://Player/gun_mover.gd" id="2_x3vf3"]
 [ext_resource type="Texture2D" uid="uid://bpfhj5b8yjtod" path="res://assets/player/reticle.png" id="3_btcbx"]
-[ext_resource type="Script" uid="uid://chjl88ekq1duf" path="res://assets/player/simple_gun/gun_model.gd" id="3_gwnis"]
-[ext_resource type="PackedScene" uid="uid://c8sshmnls6wgb" path="res://assets/gameart/gun.blend" id="3_x3vf3"]
-[ext_resource type="Script" uid="uid://b77pjg7kfkx8d" path="res://Player/bullet_system.gd" id="5_k53q1"]
+[ext_resource type="PackedScene" uid="uid://cxkhv22lunjow" path="res://Gun/gun_system.tscn" id="4_x3vf3"]
 [ext_resource type="Script" uid="uid://dthw36hsue8j7" path="res://Player/health_bar.gd" id="6_00tjw"]
 [ext_resource type="Script" uid="uid://bmpr6l6kwf40o" path="res://components/hurt_box.gd" id="6_fhl08"]
 [ext_resource type="Script" uid="uid://04gndijhfv62" path="res://components/health_system.gd" id="7_vtle1"]
@@ -18,62 +16,14 @@ radius = 0.7832031
 
 [sub_resource type="Animation" id="Animation_x3vf3"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/gun:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -3.1415925, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D/gun:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.3623354, -0.4529122, -0.7861154)]
-}
 
 [sub_resource type="Animation" id="Animation_5htga"]
 resource_name = "reload"
 length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/gun:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -3.1415925, 0), Vector3(6.2831855, -3.1415927, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_apopc"]
 resource_name = "shoot"
 length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/gun:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.3623354, -0.4529122, -0.7861154), Vector3(0.3623354, -0.4529122, -0.6573189), Vector3(0.3623354, -0.4529122, -0.7861154)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5htga"]
 _data = {
@@ -103,15 +53,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5302196, -0.16283238)
 cull_mask = 1048573
 current = true
 
-[node name="gun" parent="Camera3D" unique_id=769039859 node_paths=PackedStringArray("parent", "shooting_point") instance=ExtResource("3_x3vf3")]
+[node name="gun" type="Node3D" parent="Camera3D" unique_id=1786892004]
 unique_name_in_owner = true
-transform = Transform3D(-0.5156991, 0, -7.78684e-08, 0, 0.5156991, 0, 7.78684e-08, 0, -0.5156991, 0.3623354, -0.4529122, -0.7861154)
-script = ExtResource("3_gwnis")
-parent = NodePath("../..")
-shooting_point = NodePath("Marker3D")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21052468, -0.9718654)
+
+[node name="GunSystem" parent="Camera3D/gun" unique_id=863837033 node_paths=PackedStringArray("parent") instance=ExtResource("4_x3vf3")]
+parent = NodePath("../../..")
 
 [node name="Marker3D" type="Marker3D" parent="Camera3D/gun" unique_id=1294227407]
-transform = Transform3D(0.9999996, 0, -1.4210855e-14, 0, 0.9999996, 0, 1.4210855e-14, 0, 0.9999996, 0, 0.7503073, 1.1492631)
+transform = Transform3D(-0.51569885, 0, -7.786836e-08, 0, 0.51569885, 0, 7.786836e-08, 0, -0.51569885, 0.36233532, -0.06597948, -1.3787893)
 
 [node name="ShootTimer" type="Timer" parent="Camera3D/gun" unique_id=1417459680]
 wait_time = 0.2
@@ -120,10 +70,6 @@ one_shot = true
 [node name="coyoteTime" type="Timer" parent="." unique_id=1667324184]
 wait_time = 0.2
 one_shot = true
-
-[node name="Bullet_system" type="Node" parent="." unique_id=1787539231]
-unique_name_in_owner = true
-script = ExtResource("5_k53q1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1934145693]
 
@@ -186,5 +132,3 @@ metadata/_custom_type_script = "uid://04gndijhfv62"
 
 [node name="GunAnimations" type="AnimationPlayer" parent="." unique_id=325352592]
 libraries/ = SubResource("AnimationLibrary_5htga")
-
-[connection signal="animation_finished" from="GunAnimations" to="Bullet_system" method="_on_gun_animations_animation_finished"]

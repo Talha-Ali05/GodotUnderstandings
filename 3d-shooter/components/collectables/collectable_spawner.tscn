@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://sos6wcjs30qi"]
 
 [ext_resource type="PackedScene" uid="uid://d4hbblwtcg88q" path="res://assets/gameart/collectable_spawner.blend" id="1_3vegb"]
-[ext_resource type="Script" uid="uid://ct8cvpkikxy6j" path="res://collectables/collectable_spawner.gd" id="1_k4j6j"]
+[ext_resource type="Script" uid="uid://ct8cvpkikxy6j" path="res://components/collectables/collectable_spawner.gd" id="1_k4j6j"]
 
 [node name="CollectableSpawner" type="Node3D" unique_id=1937056969]
 script = ExtResource("1_k4j6j")
