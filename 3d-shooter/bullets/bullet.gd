@@ -1,4 +1,4 @@
-extends Area3D
+class_name Bullet extends Area3D
 
 
 var speed = 70.0
@@ -7,9 +7,14 @@ var travel_distance = 0
 
 func setup(parent:Marker3D):
 	self.global_transform = parent.global_transform
+	body_entered.connect(_on_body_entered)
 
 func _physics_process(delta: float) -> void:
 	position += transform.basis.z * speed * delta
 	travel_distance += speed*delta
 	if travel_distance > max_range:
 		queue_free()
+
+
+func _on_body_entered(_body: Node3D) -> void:
+	queue_free()

@@ -30,3 +30,5 @@ metadata/_custom_type_script = "uid://bv4rkbpgg8wwp"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" unique_id=813571201]
 shape = SubResource("SphereShape3D_xuifw")
 debug_color = Color(0.9999998, 0, 0.10509225, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

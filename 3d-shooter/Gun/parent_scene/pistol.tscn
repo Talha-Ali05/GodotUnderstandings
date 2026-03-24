@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cdusbwupv0xvk"]
+
+[ext_resource type="PackedScene" uid="uid://by11bon7tjjjw" path="res://Gun/parent_scene/simple_gun.tscn" id="1_2yo7j"]
+[ext_resource type="Script" uid="uid://c66x6823iuwge" path="res://Gun/parent_scene/pistol.gd" id="2_r0wwi"]
+[ext_resource type="PackedScene" uid="uid://c8sshmnls6wgb" path="res://assets/gameart/gun.blend" id="2_smn1g"]
+
+[node name="Pistol" unique_id=2074387412 instance=ExtResource("1_2yo7j")]
+script = ExtResource("2_r0wwi")
+
+[node name="Marker3D" parent="." index="0" unique_id=1667523103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3786329, 0.94909745)
+gizmo_extents = 0.29
+
+[node name="gun" parent="." index="1" unique_id=199253523 instance=ExtResource("2_smn1g")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

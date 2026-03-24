@@ -58,10 +58,8 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21052468, -0.9718654)
 
 [node name="GunSystem" parent="Camera3D/gun" unique_id=863837033 node_paths=PackedStringArray("parent") instance=ExtResource("4_x3vf3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4980914, -0.2767862, 0.3256604)
 parent = NodePath("../../..")
-
-[node name="Marker3D" type="Marker3D" parent="Camera3D/gun" unique_id=1294227407]
-transform = Transform3D(-0.51569885, 0, -7.786836e-08, 0, 0.51569885, 0, 7.786836e-08, 0, -0.51569885, 0.36233532, -0.06597948, -1.3787893)
 
 [node name="ShootTimer" type="Timer" parent="Camera3D/gun" unique_id=1417459680]
 wait_time = 0.2

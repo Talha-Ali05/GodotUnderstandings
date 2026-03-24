@@ -10,7 +10,6 @@ gun = ExtResource("2_nfubc")
 
 [node name="BulletSystem" type="Node" parent="." unique_id=656934513]
 script = ExtResource("2_jwpg4")
-max_capacity = 30
 metadata/_custom_type_script = "uid://b77pjg7kfkx8d"
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=1542962366]

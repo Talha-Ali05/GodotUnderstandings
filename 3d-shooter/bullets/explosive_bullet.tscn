@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cy01rujdgtm31"]
+
+[ext_resource type="Script" uid="uid://bwrphk5122a7q" path="res://bullets/explosive_bullet.gd" id="1_2gmiv"]
+[ext_resource type="PackedScene" uid="uid://yydjqi0nwad5" path="res://bullets/projectile_model.tscn" id="2_5uhcd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bqyr2"]
+radius = 0.35281375
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1h2fl"]
+radius = 5.0
+
+[node name="ExplosiveBullet" type="Area3D" unique_id=458882526]
+script = ExtResource("1_2gmiv")
+metadata/_custom_type_script = "uid://cqn8cfhjswf5j"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2144355287]
+shape = SubResource("SphereShape3D_bqyr2")
+
+[node name="projectile_model" parent="." unique_id=1120046165 instance=ExtResource("2_5uhcd")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="BlastArea" type="Area3D" parent="." unique_id=1344558894]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlastArea" unique_id=1232486338]
+shape = SubResource("SphereShape3D_1h2fl")

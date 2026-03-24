@@ -10,10 +10,9 @@ class_name Gun extends Resource
 
 
 
-func setup(parent:Node3D, pos:Marker3D) -> Node3D:
+func setup(parent:Node3D) -> Node3D:
 	var instance = model.instantiate()
 	parent.add_child(instance)
 	if instance:
 		instance.rotation_degrees.y = 180
-		instance.position = pos.position
 	return instance

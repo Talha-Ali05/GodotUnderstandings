@@ -1,16 +1,16 @@
 extends Node3D
 @export var gun:Gun
-@onready var marker: Marker3D = $Marker
 @onready var bullet_system: BulletSystem = $BulletSystem
 @export var parent:Player
 
 
-var current_gun:Node3D
+var current_gun:GunModel
 
 func _ready() -> void:
-	current_gun = gun.setup(self,marker)
+	current_gun = gun.setup(self)
 	bullet_system.max_capacity = gun.bullets
-	$ShootTimer.wait_time = gun.shoot_time
+	if gun.shoot_time:
+		$ShootTimer.wait_time = gun.shoot_time
 
 
 func _process(_delta: float) -> void:
@@ -28,17 +28,19 @@ func _process(_delta: float) -> void:
 
 func shoot():
 	var new_bullet = gun.bullet_scene.instantiate()
-	new_bullet.setup($Shooting_point)
-	add_child(new_bullet)
+	get_tree().root.add_child(new_bullet)
+	new_bullet.setup(current_gun.shoot_point)
 
 func gun_shoot():
 	shoot()
-	push(gun.push_force,parent)
+	#push(gun.push_force,parent)
 	bullet_system.use_bullet()
-func push(push_force, new_parent:Player):
-	if new_parent:
-		var recoil_dir = -marker.global_transform.basis.z
-		new_parent.velocity += recoil_dir*push_force
+	
+
+#func push(push_force, new_parent:Player):
+	#if new_parent:
+		#var recoil_dir = -marker.global_transform.basis.z
+		#new_parent.velocity += recoil_dir*push_force
 
 
 func swap_gun(new_gun: Gun):
@@ -52,4 +54,4 @@ func swap_gun(new_gun: Gun):
 	$ShootTimer.wait_time = gun.shoot_time
 	
 	# spawn new model
-	current_gun = gun.setup(self, marker)
+	current_gun = gun.setup(self)

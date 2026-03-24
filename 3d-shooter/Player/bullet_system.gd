@@ -10,9 +10,7 @@ func _ready() -> void:
 
 func reload():
 	if Input.is_action_just_pressed("reload") and current_bullets<max_capacity:
-		can_shoot = false
 		current_bullets = max_capacity
-		can_shoot = true
 
 
 func use_bullet():
