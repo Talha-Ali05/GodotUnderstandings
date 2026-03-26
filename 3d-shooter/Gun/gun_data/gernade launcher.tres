@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://44ux07u8s6k" path="res://resources/gun_system.gd" id="1_ov0wf"]
 [ext_resource type="PackedScene" uid="uid://cy01rujdgtm31" path="res://bullets/explosive_bullet.tscn" id="1_sk2l8"]
-[ext_resource type="PackedScene" uid="uid://cdusbwupv0xvk" path="res://Gun/parent_scene/pistol.tscn" id="2_sk2l8"]
+[ext_resource type="PackedScene" uid="uid://cs161w0v5t2m6" path="res://Gun/parent_scene/launcher.tscn" id="2_sk2l8"]
 
 [resource]
 script = ExtResource("1_ov0wf")
@@ -10,5 +10,6 @@ model = ExtResource("2_sk2l8")
 one_time_shoot = true
 reload_time = 0.3
 bullets = 3
+push_force = 3.0
 bullet_scene = ExtResource("1_sk2l8")
 metadata/_custom_type_script = "uid://44ux07u8s6k"

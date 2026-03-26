@@ -4,13 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://yydjqi0nwad5" path="res://bullets/projectile_model.tscn" id="2_5uhcd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bqyr2"]
-radius = 0.35281375
+radius = 0.50547606
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1h2fl"]
-radius = 5.0
+radius = 3.0
 
 [node name="ExplosiveBullet" type="Area3D" unique_id=458882526]
 script = ExtResource("1_2gmiv")
+max_range = 30.0
 metadata/_custom_type_script = "uid://cqn8cfhjswf5j"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2144355287]

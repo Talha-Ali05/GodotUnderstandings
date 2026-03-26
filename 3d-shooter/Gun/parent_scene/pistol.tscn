@@ -8,7 +8,7 @@
 script = ExtResource("2_r0wwi")
 
 [node name="Marker3D" parent="." index="0" unique_id=1667523103]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3786329, 0.94909745)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3786329, 0.6889121)
 gizmo_extents = 0.29
 
 [node name="gun" parent="." index="1" unique_id=199253523 instance=ExtResource("2_smn1g")]

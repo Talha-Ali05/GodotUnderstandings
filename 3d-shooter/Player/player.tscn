@@ -6,11 +6,22 @@
 [ext_resource type="PackedScene" uid="uid://cxkhv22lunjow" path="res://Gun/gun_system.tscn" id="4_x3vf3"]
 [ext_resource type="Script" uid="uid://dthw36hsue8j7" path="res://Player/health_bar.gd" id="6_00tjw"]
 [ext_resource type="Script" uid="uid://bmpr6l6kwf40o" path="res://components/hurt_box.gd" id="6_fhl08"]
+[ext_resource type="Shader" uid="uid://da82qj8arpjs4" path="res://shaders/glitch.gdshader" id="6_x3vf3"]
 [ext_resource type="Script" uid="uid://04gndijhfv62" path="res://components/health_system.gd" id="7_vtle1"]
+[ext_resource type="Script" uid="uid://c4maxjvf7p0yp" path="res://Player/glitch_screen.gd" id="7_x3vf3"]
 [ext_resource type="PackedScene" uid="uid://dln0ysbnlvw4c" path="res://assets/level/debug_menu.tscn" id="8_od3ui"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvfyp"]
 radius = 0.7832031
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x3vf3"]
+shader = ExtResource("6_x3vf3")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_block_size = 30.5
+shader_parameter/fade = 0.01
+shader_parameter/direction_r = Vector2(1, 0)
+shader_parameter/direction_g = Vector2(0.4, 1)
+shader_parameter/direction_b = Vector2(-0.7, -0.3)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fhl08"]
 
@@ -36,6 +47,9 @@ _data = {
 collision_layer = 3
 collision_mask = 9
 script = ExtResource("1_4ntmi")
+speed = 8.0
+sprint_speed = 15.0
+jump_force = 13.0
 
 [node name="gun_mover" type="RayCast3D" parent="." unique_id=1317032497]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 0)
@@ -86,21 +100,6 @@ grow_vertical = 2
 texture = ExtResource("3_btcbx")
 expand_mode = 1
 
-[node name="Bullets" type="Label" parent="CanvasLayer" unique_id=1877496673]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = 372.0
-offset_right = 50.0
-offset_bottom = 439.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 48
-text = "20\\*"
-
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=1061880985]
 offset_left = 56.0
 offset_top = 1000.0
@@ -110,6 +109,19 @@ theme_override_font_sizes/font_size = 32
 value = 7.89
 show_percentage = false
 script = ExtResource("6_00tjw")
+
+[node name="GlitchScreen" type="ColorRect" parent="CanvasLayer" unique_id=267768143]
+process_mode = 3
+material = SubResource("ShaderMaterial_x3vf3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("7_x3vf3")
 
 [node name="HurtBox" type="Area3D" parent="." unique_id=1485935434]
 collision_layer = 2

@@ -5,7 +5,7 @@ class_name BatChase extends EnemyState
 
 func physics_update(_delta):
 	if player:
-		model.global_basis.y = 180
+		model.rotation_degrees.y = 180
 		var direction = -(parent.global_transform.origin - player.global_transform.origin).normalized()
 		parent.look_at(player.global_transform.origin)
 		parent.velocity = direction * speed

@@ -4,7 +4,7 @@ class_name Player extends CharacterBody3D
 @export var sprint_speed = 12.0
 @export var jump_force = 12.0
 var base_speed = speed
-@export var fric = 80.0    
+@export var fric = 30.0    
 
 var base_fov = 75.0
 var fov_change = 2.0
@@ -16,7 +16,6 @@ var time:float
 var t_bob:float
 
 @onready var camera_3d: Camera3D = $Camera3D
-@onready var bullets: Label = $CanvasLayer/Bullets
 
 
 
@@ -57,7 +56,8 @@ func _physics_process(_delta: float) -> void:
 	else:
 		speed = base_speed
 	t_bob = time * velocity.length() * float(is_on_floor())
-	camera_3d.transform.origin = original_cam_pos + head_bob(t_bob)
+	if velocity.length()  > speed or velocity.length() < -speed:
+		camera_3d.transform.origin = original_cam_pos + head_bob(t_bob)
 	
 	var velo_clam = clamp(velocity.length(),.5,sprint_speed*2)
 	var target_fov = base_fov + (fov_change * velo_clam)

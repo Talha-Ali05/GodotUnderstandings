@@ -13,7 +13,7 @@ size = Vector3(1.4802246, 0.81921387, 0.47436523)
 [sub_resource type="BoxShape3D" id="BoxShape3D_orwns"]
 size = Vector3(1.5439453, 1, 0.5341797)
 
-[node name="Enemy" type="CharacterBody3D" unique_id=2144013182]
+[node name="Enemy" type="CharacterBody3D" unique_id=2144013182 groups=["Enemy"]]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_7frlh")
 

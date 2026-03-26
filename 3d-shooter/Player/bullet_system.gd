@@ -1,7 +1,9 @@
 class_name BulletSystem extends Node
 
 @export var max_capacity:int
-var current_bullets
+var current_bullets:
+	set(value):
+		current_bullets = value
 var can_shoot :=true
 
 
