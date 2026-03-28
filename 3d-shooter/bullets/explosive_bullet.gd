@@ -10,10 +10,12 @@ func explode() -> void:
 	
 	for body in bodies:
 		if body is Player:
+			await  body.set_blast_time(.3)
 			var distance = global_position.distance_to(body.global_position)
 			var falloff = 1.0 - (distance / blast_radius)
 			var direction = (body.global_position - global_position).normalized()
-			body.velocity += direction * blast_intensity * falloff
+			var blast_force = direction * blast_intensity * falloff
+			body.velocity = blast_force
 		if body.is_in_group("enemies"):
 			body.health_system.take_damage(50)
 	

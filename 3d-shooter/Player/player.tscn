@@ -10,6 +10,10 @@
 [ext_resource type="Script" uid="uid://04gndijhfv62" path="res://components/health_system.gd" id="7_vtle1"]
 [ext_resource type="Script" uid="uid://c4maxjvf7p0yp" path="res://Player/glitch_screen.gd" id="7_x3vf3"]
 [ext_resource type="PackedScene" uid="uid://dln0ysbnlvw4c" path="res://assets/level/debug_menu.tscn" id="8_od3ui"]
+[ext_resource type="AudioStream" uid="uid://dmjlw3ljsest4" path="res://assets/SFXs/walk/freesound_community-concrete-footsteps-6752-3-2.wav" id="11_gu6f8"]
+[ext_resource type="AudioStream" uid="uid://bgaeylq1p3dcu" path="res://assets/SFXs/walk/freesound_community-concrete-footsteps-6752-4-2.wav" id="12_dkpta"]
+[ext_resource type="AudioStream" uid="uid://brsrusvt0yq3r" path="res://assets/SFXs/walk/freesound_community-concrete-footsteps-6752-4.wav" id="13_lfmf2"]
+[ext_resource type="AudioStream" uid="uid://butya5akvvj6t" path="res://assets/SFXs/walk/freesound_community-concrete-footsteps-6752-5.wav" id="14_pisgm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvfyp"]
 radius = 0.7832031
@@ -43,13 +47,18 @@ _data = {
 &"shoot": SubResource("Animation_apopc")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lfmf2"]
+random_pitch = 1.0717734
+streams_count = 4
+stream_0/stream = ExtResource("11_gu6f8")
+stream_1/stream = ExtResource("12_dkpta")
+stream_2/stream = ExtResource("13_lfmf2")
+stream_3/stream = ExtResource("14_pisgm")
+
 [node name="Player" type="CharacterBody3D" unique_id=1359448494 groups=["player"]]
 collision_layer = 3
 collision_mask = 9
 script = ExtResource("1_4ntmi")
-speed = 8.0
-sprint_speed = 15.0
-jump_force = 13.0
 
 [node name="gun_mover" type="RayCast3D" parent="." unique_id=1317032497]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 0)
@@ -60,22 +69,25 @@ script = ExtResource("2_x3vf3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_hvfyp")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=64011662]
+[node name="head" type="Node3D" parent="." unique_id=1912306959]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.501692, 0)
+
+[node name="Camera3D" type="Camera3D" parent="head" unique_id=64011662]
 process_priority = 1
 process_physics_priority = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5302196, -0.16283238)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028527498, -0.16283238)
 cull_mask = 1048573
 current = true
 
-[node name="gun" type="Node3D" parent="Camera3D" unique_id=1786892004]
+[node name="gun" type="Node3D" parent="head" unique_id=1786892004]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21052468, -0.9718654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18199718, -1.1346978)
 
-[node name="GunSystem" parent="Camera3D/gun" unique_id=863837033 node_paths=PackedStringArray("parent") instance=ExtResource("4_x3vf3")]
+[node name="GunSystem" parent="head/gun" unique_id=863837033 node_paths=PackedStringArray("parent") instance=ExtResource("4_x3vf3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4980914, -0.2767862, 0.3256604)
 parent = NodePath("../../..")
 
-[node name="ShootTimer" type="Timer" parent="Camera3D/gun" unique_id=1417459680]
+[node name="ShootTimer" type="Timer" parent="head/gun" unique_id=1417459680]
 wait_time = 0.2
 one_shot = true
 
@@ -142,3 +154,6 @@ metadata/_custom_type_script = "uid://04gndijhfv62"
 
 [node name="GunAnimations" type="AnimationPlayer" parent="." unique_id=325352592]
 libraries/ = SubResource("AnimationLibrary_5htga")
+
+[node name="WalkAudio3D" type="AudioStreamPlayer3D" parent="." unique_id=1622661030]
+stream = SubResource("AudioStreamRandomizer_lfmf2")

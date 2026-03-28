@@ -10,26 +10,38 @@ var base_fov = 75.0
 var fov_change = 2.0
 
 
-var head_bob_freq = 2.3
+var head_bob_freq = 1.5
 var head_bob_ampl = .2
 var time:float
 var t_bob:float
 
-@onready var camera_3d: Camera3D = $Camera3D
+var blast_timer:float = .3
+
+@onready var camera_3d: Camera3D = $head/Camera3D
+@onready var head: Node3D = $head
 
 
 
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var health_system: HealthSystem = $HealthSystem
 @onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
+@onready var gun_system: Node3D = $head/gun/GunSystem
+
 
 
 var can_jump = true
 var was_on_floor:bool
 
+
+var walk_can_play:=true
+var walk_landed:bool
+
+
 var original_cam_pos
+var original_gun_pos
 
 func _ready() -> void:
+	original_gun_pos = gun_system.transform.origin
 	original_cam_pos = camera_3d.transform.origin
 	health_system.die.connect(game_over)
 	health_bar.max_value = health_system.max_health
@@ -39,16 +51,19 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= event.relative.x * .5
-		camera_3d.rotation_degrees.x -= event.relative.y * .2
-		camera_3d.rotation_degrees.x = clamp(camera_3d.rotation_degrees.x,-80,80)
+		head.rotation_degrees.x -= event.relative.y * .2
+		head.rotation_degrees.x = clamp(head.rotation_degrees.x,-80,80)
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(_delta: float) -> void:
+	if blast_timer >0:
+		blast_timer -= _delta
 	time +=_delta
 	health_bar.health = health_system.health
 	
 	movement_system(_delta)
+	gun_positioning()
 	jump_system(_delta)
 
 	if Input.is_action_pressed("sprint"):
@@ -56,7 +71,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		speed = base_speed
 	t_bob = time * velocity.length() * float(is_on_floor())
-	if velocity.length()  > speed or velocity.length() < -speed:
+	if velocity.length() >= base_speed - 1 or velocity.length() <=-base_speed - 1 :
 		camera_3d.transform.origin = original_cam_pos + head_bob(t_bob)
 	
 	var velo_clam = clamp(velocity.length(),.5,sprint_speed*2)
@@ -67,7 +82,13 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 	was_on_floor = is_on_floor()
-
+	
+	if is_on_floor() and not walk_landed:
+		$WalkAudio3D.play()
+	if walk_landed and not is_on_floor():
+		$WalkAudio3D.play()
+	
+	walk_landed = is_on_floor()
 
 
 func movement_system(_delta):
@@ -77,7 +98,7 @@ func movement_system(_delta):
 	if input_dir_2d:
 		velocity.x= speed*direction.x
 		velocity.z= speed*direction.z
-	else:
+	if is_on_floor() and blast_timer <= 0:
 		var current_fric = fric if is_on_floor() else 8.0
 		velocity.x= move_toward(velocity.x,0,current_fric * _delta)
 		velocity.z= move_toward(velocity.z,0,current_fric * _delta)
@@ -104,6 +125,10 @@ func get_hurt(damage,hitbox):
 	print(health_system.health)
 	health_system.take_damage(hitbox.damage)
 
+func gun_positioning():
+	if not velocity.length():
+		gun_system.transform.origin = original_gun_pos
+
 func collect_system(value):
 	health_system.heal(value)
 
@@ -111,7 +136,19 @@ func head_bob(new_time) ->Vector3:
 	var pos:= Vector3.ZERO
 	pos.y = sin(new_time*head_bob_freq)*head_bob_ampl
 	pos.x = cos(new_time*head_bob_freq/2)*head_bob_ampl
+	var threshold = -head_bob_ampl +.002
+	if pos.y > threshold:
+		walk_can_play = true
+	elif pos.y < threshold and walk_can_play:
+		walk_can_play = false
+		$WalkAudio3D.play()
 	return pos
+	
+
+func set_blast_time(value):
+	blast_timer = value
+
+
 
 func game_over():
 	pass

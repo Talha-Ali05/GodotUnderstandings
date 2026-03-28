@@ -4,7 +4,7 @@ extends ColorRect
 ## Fade value at full health (0.0 = completely invisible effect)
 @export var min_fade: float = 0.001
 ## Fade value at zero health (keep below ~0.10 to stay readable)
-@export var max_fade: float = 0.02
+@export var max_fade: float = 0.03
 ## How fast the effect lerps to its target each frame
 @export var lerp_speed: float = 4.0
 # ───────────────────────────────────────────────────────────────
