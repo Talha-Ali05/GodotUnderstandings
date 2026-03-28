@@ -7,6 +7,7 @@ class_name Gun extends Resource
 @export var push_force:float
 @export var shoot_time:float
 @export var bullet_scene:PackedScene
+@export var gun_sound:AudioStream
 
 
 

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://44ux07u8s6k" path="res://resources/gun_system.gd" id="1_ov0wf"]
 [ext_resource type="PackedScene" uid="uid://cy01rujdgtm31" path="res://bullets/explosive_bullet.tscn" id="1_sk2l8"]
 [ext_resource type="PackedScene" uid="uid://cs161w0v5t2m6" path="res://Gun/parent_scene/launcher.tscn" id="2_sk2l8"]
+[ext_resource type="AudioStream" uid="uid://c2f5h8l72purd" path="res://assets/SFXs/walk/launchersound.mp3" id="2_vi7p2"]
 
 [resource]
 script = ExtResource("1_ov0wf")
@@ -12,4 +13,5 @@ reload_time = 0.3
 bullets = 3
 push_force = 3.0
 bullet_scene = ExtResource("1_sk2l8")
+gun_sound = ExtResource("2_vi7p2")
 metadata/_custom_type_script = "uid://44ux07u8s6k"

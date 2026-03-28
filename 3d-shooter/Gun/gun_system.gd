@@ -3,6 +3,8 @@ extends Node3D
 @onready var bullet_system: BulletSystem = $BulletSystem
 @export var parent:Player
 @onready var label: Label = $Label
+@onready var gun_sound_3d: AudioStreamPlayer3D = $GunSound3D
+
 
 var guns:Array[GunsData.Guns] = [GunsData.Guns.PISTOL,GunsData.Guns.LAUNCHER]
 var current_gun_data:GunsData.Guns
@@ -14,6 +16,7 @@ func _ready() -> void:
 	bullet_system.max_capacity = gun.bullets
 	if gun.shoot_time:
 		$ShootTimer.wait_time = gun.shoot_time
+	gun_sound_3d.stream = gun.gun_sound
 
 
 func _process(_delta: float) -> void:
@@ -41,6 +44,7 @@ func shoot():
 	var new_bullet = gun.bullet_scene.instantiate()
 	get_tree().root.add_child(new_bullet)
 	new_bullet.setup(current_gun.shoot_point)
+	gun_sound_3d.play()
 
 func gun_shoot():
 	shoot()
@@ -60,6 +64,7 @@ func swap_gun(new_gun:GunsData.Guns):
 	
 	gun = GunsData.guns_data[new_gun]
 	bullet_system.max_capacity = gun.bullets
+	gun_sound_3d.stream = gun.gun_sound
 	if gun.shoot_time > 0:
 		$ShootTimer.wait_time = gun.shoot_time
 	

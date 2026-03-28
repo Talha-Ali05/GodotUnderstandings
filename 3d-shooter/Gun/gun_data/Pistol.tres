@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dxm6dg7ugwqql" path="res://bullets/bullet.tscn" id="1_54mf6"]
 [ext_resource type="Script" uid="uid://44ux07u8s6k" path="res://resources/gun_system.gd" id="1_pov4g"]
+[ext_resource type="AudioStream" uid="uid://bqo772dwp73sq" path="res://assets/SFXs/walk/pistolsound.mp3" id="2_fqsfy"]
 [ext_resource type="PackedScene" uid="uid://cdusbwupv0xvk" path="res://Gun/parent_scene/pistol.tscn" id="2_sg1ao"]
 
 [resource]
@@ -12,4 +13,5 @@ bullets = 20
 push_force = 3.0
 shoot_time = 0.2
 bullet_scene = ExtResource("1_54mf6")
+gun_sound = ExtResource("2_fqsfy")
 metadata/_custom_type_script = "uid://44ux07u8s6k"
