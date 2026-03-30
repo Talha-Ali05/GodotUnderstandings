@@ -1,10 +1,10 @@
-extends CharacterBody3D
+class_name Enemy extends CharacterBody3D
 var player:CharacterBody3D
 @onready var bat_model: Node3D = $bat_model
 @onready var animation_player: AnimationPlayer = $bat_model/AnimationPlayer
 @onready var health_system: HealthSystem = $HealthSystem
 
-var speed = 300.0
+var speed = 150.0
 
 func setup(parent:Node3D, new_player:CharacterBody3D):
 	global_position = parent.global_position

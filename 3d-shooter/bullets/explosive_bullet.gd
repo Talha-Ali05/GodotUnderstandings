@@ -2,12 +2,16 @@ extends Bullet
 
 @export var blast_radius = 10
 @export var blast_intensity = 30
+@onready var explosion_player_3d: AudioStreamPlayer3D =%ExplosionPlayer3D
+
+
 func _on_body_entered(_body: Node3D) -> void:
 	explode()
 
+
 func explode() -> void:
-	var bodies = $BlastArea.get_overlapping_bodies()  # Area3D with SphereShape
-	
+	var bodies = $BlastArea.get_overlapping_bodies()
+	explosion_player_3d.play()
 	for body in bodies:
 		if body is Player:
 			await  body.set_blast_time(.3)
@@ -16,7 +20,9 @@ func explode() -> void:
 			var direction = (body.global_position - global_position).normalized()
 			var blast_force = direction * blast_intensity * falloff
 			body.velocity = blast_force
-		if body.is_in_group("enemies"):
-			body.health_system.take_damage(50)
-	
+		if body is Enemy:
+			body.health_system.take_damage(100)
+	$projectile_model.visible = false
+	$BlastArea/CollisionShape3D.disabled = true
+	await explosion_player_3d.finished
 	queue_free()

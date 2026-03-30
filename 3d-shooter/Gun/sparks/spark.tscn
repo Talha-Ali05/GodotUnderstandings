@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://deb04ougpbqek"]
+
+[ext_resource type="Shader" uid="uid://bmxel3n18wpx6" path="res://shaders/muzzle_flash_billboard_side.gdshader" id="1_23t1r"]
+[ext_resource type="Texture2D" uid="uid://davdhwfjckqcl" path="res://assets/VFXs/MuzzelFlash.png" id="2_hdsly"]
+[ext_resource type="Shader" uid="uid://j2hl6xfa01np" path="res://shaders/muzzle_flash_billboard_face.gdshader" id="3_y2w37"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbnl3"]
+render_priority = 0
+shader = ExtResource("1_23t1r")
+shader_parameter/emission = 1.0
+shader_parameter/main_tex = ExtResource("2_hdsly")
+shader_parameter/face_threshold = 0.1
+
+[sub_resource type="QuadMesh" id="QuadMesh_hdsly"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tuxaq"]
+render_priority = 0
+shader = ExtResource("3_y2w37")
+shader_parameter/emission = 1.0
+shader_parameter/main_tex = ExtResource("2_hdsly")
+shader_parameter/face_threshold = 0.1
+
+[node name="Spark" type="MeshInstance3D" unique_id=1915387562]
+material_override = SubResource("ShaderMaterial_gbnl3")
+mesh = SubResource("QuadMesh_hdsly")
+
+[node name="Spark" type="MeshInstance3D" parent="." unique_id=806095684]
+material_override = SubResource("ShaderMaterial_tuxaq")
+mesh = SubResource("QuadMesh_hdsly")

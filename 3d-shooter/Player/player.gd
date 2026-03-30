@@ -25,7 +25,7 @@ var blast_timer:float = .3
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var health_system: HealthSystem = $HealthSystem
 @onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
-@onready var gun_system: Node3D = $head/gun/GunSystem
+@onready var gun_system: Node3D = %GunSystem
 
 
 

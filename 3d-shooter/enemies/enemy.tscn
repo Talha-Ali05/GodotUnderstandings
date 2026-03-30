@@ -11,7 +11,7 @@
 size = Vector3(1.4802246, 0.81921387, 0.47436523)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_orwns"]
-size = Vector3(1.5439453, 1, 0.5341797)
+size = Vector3(1.5683594, 1.0849609, 1.4377441)
 
 [node name="Enemy" type="CharacterBody3D" unique_id=2144013182 groups=["Enemy"]]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -48,7 +48,7 @@ script = ExtResource("3_orwns")
 metadata/_custom_type_script = "uid://bmpr6l6kwf40o"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" unique_id=185833073]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025634766, 0)
+transform = Transform3D(0.9999999, -0.00030294497, 0.00031542574, 0.0003028763, 1, 0.00021810968, -0.0003154917, -0.00021801428, 0.9999999, 0, 0.025634766, 0)
 shape = SubResource("BoxShape3D_orwns")
 debug_color = Color(0.22355375, 0.63925624, 5.7756904e-07, 0.41960785)
 
@@ -63,7 +63,7 @@ initial_state = NodePath("Chase")
 [node name="Chase" type="Node" parent="StateMachine" unique_id=1615713323 node_paths=PackedStringArray("model", "parent")]
 script = ExtResource("6_3t1x0")
 model = NodePath("../../bat_model")
-speed = 5.0
+speed = 2.0
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dfugkdkoww26w"
 

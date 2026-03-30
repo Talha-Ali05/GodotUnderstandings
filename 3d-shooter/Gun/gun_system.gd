@@ -44,7 +44,11 @@ func shoot():
 	var new_bullet = gun.bullet_scene.instantiate()
 	get_tree().root.add_child(new_bullet)
 	new_bullet.setup(current_gun.shoot_point)
+	gun_sound_3d.pitch_scale = randf_range(.9,1.5)
 	gun_sound_3d.play()
+	current_gun.spark.show()
+	await get_tree().create_timer(.1).timeout
+	current_gun.spark.hide()
 
 func gun_shoot():
 	shoot()

@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://by11bon7tjjjw"]
 
 [ext_resource type="Script" uid="uid://dri232reluo4y" path="res://Gun/parent_scene/simple_gun.gd" id="1_6rlxf"]
+[ext_resource type="PackedScene" uid="uid://deb04ougpbqek" path="res://Gun/sparks/spark.tscn" id="2_5ao3e"]
 
 [node name="SimpleGun" type="Node3D" unique_id=2074387412]
 script = ExtResource("1_6rlxf")
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1667523103]
+
+[node name="Spark" parent="." unique_id=1915387562 instance=ExtResource("2_5ao3e")]
+visible = false
