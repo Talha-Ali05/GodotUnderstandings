@@ -14,12 +14,12 @@ func explode() -> void:
 	explosion_player_3d.play()
 	for body in bodies:
 		if body is Player:
-			await  body.set_blast_time(.3)
 			var distance = global_position.distance_to(body.global_position)
 			var falloff = 1.0 - (distance / blast_radius)
 			var direction = (body.global_position - global_position).normalized()
 			var blast_force = direction * blast_intensity * falloff
-			body.velocity = blast_force
+			body.push_velo = blast_force
+			body.set_blast_time(.3)
 		if body is Enemy:
 			body.health_system.take_damage(100)
 	$projectile_model.visible = false

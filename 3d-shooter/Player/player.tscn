@@ -28,6 +28,8 @@ shader_parameter/direction_g = Vector2(0.4, 1)
 shader_parameter/direction_b = Vector2(-0.7, -0.3)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fhl08"]
+radius = 1.0444336
+height = 2.0888672
 
 [sub_resource type="Animation" id="Animation_x3vf3"]
 length = 0.001
@@ -81,7 +83,7 @@ current = true
 
 [node name="gun" type="Node3D" parent="head/Camera3D" unique_id=1786892004]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21052468, -0.9718654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21052468, -0.66401917)
 
 [node name="GunSystem" parent="head/Camera3D/gun" unique_id=863837033 node_paths=PackedStringArray("parent") instance=ExtResource("4_x3vf3")]
 unique_name_in_owner = true

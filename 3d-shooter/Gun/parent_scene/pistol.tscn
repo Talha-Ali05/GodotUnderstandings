@@ -16,4 +16,3 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 
 [node name="Spark" parent="." index="2" unique_id=1915387562]
 transform = Transform3D(0.6783759, 0, 0, 0, -0.6783759, -5.9305506e-08, 0, 5.9305506e-08, -0.6783759, 0, 0.3781191, 0.6910453)
-visible = true

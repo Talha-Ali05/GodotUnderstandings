@@ -4,6 +4,7 @@ class_name Player extends CharacterBody3D
 @export var sprint_speed = 12.0
 @export var jump_force = 12.0
 var base_speed = speed
+var push_velo
 @export var fric = 30.0    
 
 var base_fov = 75.0
@@ -57,10 +58,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(_delta: float) -> void:
+	
 	if blast_timer >0:
 		blast_timer -= _delta
 	time +=_delta
 	health_bar.health = health_system.health
+	if blast_timer > 0:
+		print("blast_timer: ", blast_timer)
+	if push_velo:
+		print("push_velo before move_and_slide: ", push_velo)
+	
 	
 	movement_system(_delta)
 	gun_positioning()
@@ -73,7 +80,7 @@ func _physics_process(_delta: float) -> void:
 	t_bob = time * velocity.length() * float(is_on_floor())
 	if velocity.length() >= base_speed - 1 or velocity.length() <=-base_speed - 1 :
 		camera_3d.transform.origin = original_cam_pos + head_bob(t_bob)
-	
+		
 	var velo_clam = clamp(velocity.length(),.5,sprint_speed*2)
 	var target_fov = base_fov + (fov_change * velo_clam)
 	camera_3d.fov = lerp(camera_3d.fov,target_fov,0.5)
@@ -81,6 +88,12 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	move_and_slide()
+	if push_velo:
+		print("push_velo after move_and_slide: ", push_velo)
+		velocity.y = max(velocity.y, push_velo.y)
+		push_velo.y = 0
+		velocity += push_velo
+		push_velo = Vector3.ZERO
 	was_on_floor = is_on_floor()
 	
 	if is_on_floor() and not walk_landed:
@@ -98,7 +111,7 @@ func movement_system(_delta):
 	if input_dir_2d:
 		velocity.x= speed*direction.x
 		velocity.z= speed*direction.z
-	if is_on_floor() and blast_timer <= 0:
+	if blast_timer <= 0:
 		var current_fric = fric if is_on_floor() else 8.0
 		velocity.x= move_toward(velocity.x,0,current_fric * _delta)
 		velocity.z= move_toward(velocity.z,0,current_fric * _delta)

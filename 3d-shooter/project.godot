@@ -23,9 +23,8 @@ GunsData="*uid://bto5e0e4r6okm"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/size/mode=3
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="viewport"
 
 [global_group]
@@ -117,3 +116,4 @@ Weapon2={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="mobile"

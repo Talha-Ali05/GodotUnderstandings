@@ -9,8 +9,7 @@
 transform = Transform3D(0.72822535, 0, 0, 0, 0.72822535, 0, 0, 0, 0.72822535, -0.15981853, 0.22376424, 0.40186286)
 
 [node name="Marker3D" parent="." index="1" unique_id=1667523103]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15981853, 0.2582096, 0.9472481)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15981853, 0.2582096, 0.5064945)
 
 [node name="Spark" parent="." index="2" unique_id=1915387562]
 transform = Transform3D(2.1900024, 0, 0, 0, -2.1900024, -1.914561e-07, 0, 1.914561e-07, -2.1900024, -0.1200788, 0.24985808, 0.8562228)
-visible = true
