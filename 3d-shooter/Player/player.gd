@@ -4,8 +4,8 @@ class_name Player extends CharacterBody3D
 @export var sprint_speed = 12.0
 @export var jump_force = 12.0
 var base_speed = speed
-var push_velo
 @export var fric = 30.0    
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
 var base_fov = 75.0
 var fov_change = 2.0
@@ -63,10 +63,6 @@ func _physics_process(_delta: float) -> void:
 		blast_timer -= _delta
 	time +=_delta
 	health_bar.health = health_system.health
-	if blast_timer > 0:
-		print("blast_timer: ", blast_timer)
-	if push_velo:
-		print("push_velo before move_and_slide: ", push_velo)
 	
 	
 	movement_system(_delta)
@@ -88,12 +84,6 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	move_and_slide()
-	if push_velo:
-		print("push_velo after move_and_slide: ", push_velo)
-		velocity.y = max(velocity.y, push_velo.y)
-		push_velo.y = 0
-		velocity += push_velo
-		push_velo = Vector3.ZERO
 	was_on_floor = is_on_floor()
 	
 	if is_on_floor() and not walk_landed:
@@ -135,8 +125,8 @@ func jump_system (_delta):
 	if $coyoteTime.time_left <=0.0:
 		can_jump = false
 func get_hurt(damage,hitbox):
-	print(health_system.health)
 	health_system.take_damage(hitbox.damage)
+	$HurtAudio3D.play()
 
 func gun_positioning():
 	if not velocity.length():

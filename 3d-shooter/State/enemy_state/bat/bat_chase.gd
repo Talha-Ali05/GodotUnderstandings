@@ -1,11 +1,15 @@
-class_name BatChase extends EnemyState
+class_name BatChase
+extends EnemyState
 
+const ATTACK_RANGE := 5.0
 
-@export var model:Node3D
+func physics_update(_delta: float) -> void:
+	if not player:
+		return
 
-func physics_update(_delta):
-	if player:
-		model.rotation_degrees.y = 180
-		var direction = -(parent.global_transform.origin - player.global_transform.origin).normalized()
-		parent.look_at(player.global_transform.origin)
-		parent.velocity = direction * speed
+	var direction := (player.global_position - parent.global_position).normalized()
+	parent.look_at(player.global_position)
+	parent.velocity = direction * speed
+
+	if parent.global_position.distance_to(player.global_position) <= ATTACK_RANGE:
+		transtition.emit(self, "BatAttack")

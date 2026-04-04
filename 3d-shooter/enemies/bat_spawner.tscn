@@ -2,9 +2,15 @@
 
 [ext_resource type="Script" uid="uid://dn1nys2krlljx" path="res://enemies/bat_spawner.gd" id="1_xusmb"]
 [ext_resource type="PackedScene" uid="uid://by0xdkugvwgnb" path="res://enemies/spawner_model.tscn" id="2_rlymb"]
+[ext_resource type="Script" uid="uid://bmpr6l6kwf40o" path="res://components/hurt_box.gd" id="3_xusmb"]
+[ext_resource type="Script" uid="uid://04gndijhfv62" path="res://components/health_system.gd" id="4_dvrk8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rlymb"]
 radius = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dvrk8"]
+radius = 2.0
+height = 4.0
 
 [node name="Bat Spawner" type="StaticBody3D" unique_id=583517729]
 script = ExtResource("1_xusmb")
@@ -16,9 +22,23 @@ shape = SubResource("SphereShape3D_rlymb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6224899, 0)
 
 [node name="Timer" type="Timer" parent="." unique_id=54503406]
-wait_time = 10.0
+wait_time = 3.0
 autostart = true
 
 [node name="spawner_model" parent="." unique_id=2025244200 instance=ExtResource("2_rlymb")]
+
+[node name="HealthSystem" type="Node" parent="." unique_id=989332181]
+script = ExtResource("4_dvrk8")
+metadata/_custom_type_script = "uid://04gndijhfv62"
+
+[node name="HurtBox" type="Area3D" parent="." unique_id=1286434078]
+collision_layer = 5
+collision_mask = 16
+script = ExtResource("3_xusmb")
+metadata/_custom_type_script = "uid://bmpr6l6kwf40o"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" unique_id=1417251378]
+shape = SubResource("CapsuleShape3D_dvrk8")
+debug_color = Color(0.49570805, 0.5830123, 0, 0.41960785)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

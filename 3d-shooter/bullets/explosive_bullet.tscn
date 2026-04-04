@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bwrphk5122a7q" path="res://bullets/explosive_bullet.gd" id="1_2gmiv"]
 [ext_resource type="PackedScene" uid="uid://yydjqi0nwad5" path="res://bullets/projectile_model.tscn" id="2_5uhcd"]
-[ext_resource type="AudioStream" uid="uid://cnxku7i5lh3q0" path="res://assets/SFXs/walk/explosion.mp3" id="2_8qvmh"]
+[ext_resource type="AudioStream" uid="uid://cnxku7i5lh3q0" path="res://assets/SFXs/guns/explosion.mp3" id="2_8qvmh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bqyr2"]
 radius = 0.50547606
@@ -11,6 +11,8 @@ radius = 0.50547606
 radius = 3.0
 
 [node name="ExplosiveBullet" type="Area3D" unique_id=458882526]
+collision_layer = 17
+collision_mask = 5
 script = ExtResource("1_2gmiv")
 metadata/_custom_type_script = "uid://cqn8cfhjswf5j"
 

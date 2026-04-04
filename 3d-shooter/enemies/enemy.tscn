@@ -6,15 +6,22 @@
 [ext_resource type="Script" uid="uid://04gndijhfv62" path="res://components/health_system.gd" id="4_a6vjd"]
 [ext_resource type="Script" uid="uid://fndkgsvlr6yb" path="res://enemies/state_machine.gd" id="5_07tka"]
 [ext_resource type="Script" uid="uid://dfugkdkoww26w" path="res://State/enemy_state/bat/bat_chase.gd" id="6_3t1x0"]
+[ext_resource type="Script" uid="uid://dqpcx2wd0mtxa" path="res://enemies/attack.gd" id="7_epsnb"]
+[ext_resource type="Script" uid="uid://bv4rkbpgg8wwp" path="res://components/hit_box.gd" id="8_4w5fm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a6vjd"]
 size = Vector3(1.4802246, 0.81921387, 0.47436523)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uba7a"]
+size = Vector3(1, 1, 0.7636719)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_orwns"]
 size = Vector3(1.5683594, 1.0849609, 1.4377441)
 
 [node name="Enemy" type="CharacterBody3D" unique_id=2144013182 groups=["Enemy"]]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_7frlh")
 
 [node name="bat_model" parent="." unique_id=61804960 instance=ExtResource("1_fw1ev")]
@@ -41,6 +48,17 @@ autoplay = &"Idle"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.046081543, 0)
 shape = SubResource("BoxShape3D_a6vjd")
 
+[node name="HitBox" type="Area3D" parent="." unique_id=243654715]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("8_4w5fm")
+metadata/_custom_type_script = "uid://bv4rkbpgg8wwp"
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HitBox" unique_id=187817024]
+transform = Transform3D(0.9999999, -0.00030294497, 0.00031542574, 0.0003028763, 1, 0.00021810968, -0.0003154917, -0.00021801428, 0.9999999, -3.7271988e-05, 0.025608992, -0.11816405)
+shape = SubResource("BoxShape3D_uba7a")
+debug_color = Color(0.9466507, 0.23339593, 0, 0.41960785)
+
 [node name="HurtBox" type="Area3D" parent="." unique_id=424130492]
 collision_layer = 4
 collision_mask = 16
@@ -58,13 +76,18 @@ metadata/_custom_type_script = "uid://04gndijhfv62"
 
 [node name="StateMachine" type="Node" parent="." unique_id=1558752618 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_07tka")
-initial_state = NodePath("Chase")
+initial_state = NodePath("BatChase")
 
-[node name="Chase" type="Node" parent="StateMachine" unique_id=1615713323 node_paths=PackedStringArray("model", "parent")]
+[node name="BatChase" type="Node" parent="StateMachine" unique_id=1615713323 node_paths=PackedStringArray("parent")]
 script = ExtResource("6_3t1x0")
-model = NodePath("../../bat_model")
-speed = 2.0
+speed = 3.0
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dfugkdkoww26w"
+
+[node name="BatAttack" type="Node" parent="StateMachine" unique_id=672889084 node_paths=PackedStringArray("parent")]
+script = ExtResource("7_epsnb")
+speed = 5.0
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://si0lw4gbrb7v"
 
 [editable path="bat_model"]

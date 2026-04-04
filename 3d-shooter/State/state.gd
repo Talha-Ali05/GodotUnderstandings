@@ -1,6 +1,6 @@
 class_name State extends Node
 
-signal transtition
+signal transtition(state:State,next_state:String)
 
 func enter():
 	pass

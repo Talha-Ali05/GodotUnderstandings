@@ -15,7 +15,8 @@ func _ready() -> void:
 	$HealthSystem.die.connect(func(): queue_free())
 
 func _physics_process(_delta: float) -> void:
-		move_and_slide()
+	$bat_model.rotation_degrees.y = 180
+	move_and_slide()
 
 
 func get_hurt(damage, hitbox):

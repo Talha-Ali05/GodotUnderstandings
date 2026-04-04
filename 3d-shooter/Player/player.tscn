@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://bgaeylq1p3dcu" path="res://assets/SFXs/walk/freesound_community-concrete-footsteps-6752-4-2.wav" id="12_dkpta"]
 [ext_resource type="AudioStream" uid="uid://brsrusvt0yq3r" path="res://assets/SFXs/walk/freesound_community-concrete-footsteps-6752-4.wav" id="13_lfmf2"]
 [ext_resource type="AudioStream" uid="uid://butya5akvvj6t" path="res://assets/SFXs/walk/freesound_community-concrete-footsteps-6752-5.wav" id="14_pisgm"]
+[ext_resource type="AudioStream" uid="uid://colihfg1ax21b" path="res://assets/SFXs/hurt/hurt.mp3" id="15_dkpta"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvfyp"]
 radius = 0.7832031
@@ -28,7 +29,7 @@ shader_parameter/direction_g = Vector2(0.4, 1)
 shader_parameter/direction_b = Vector2(-0.7, -0.3)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fhl08"]
-radius = 1.0444336
+radius = 0.8652344
 height = 2.0888672
 
 [sub_resource type="Animation" id="Animation_x3vf3"]
@@ -56,6 +57,11 @@ stream_0/stream = ExtResource("11_gu6f8")
 stream_1/stream = ExtResource("12_dkpta")
 stream_2/stream = ExtResource("13_lfmf2")
 stream_3/stream = ExtResource("14_pisgm")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pisgm"]
+random_pitch = 1.0717734
+streams_count = 1
+stream_0/stream = ExtResource("15_dkpta")
 
 [node name="Player" type="CharacterBody3D" unique_id=1359448494 groups=["player"]]
 collision_layer = 3
@@ -116,10 +122,16 @@ texture = ExtResource("3_btcbx")
 expand_mode = 1
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=1061880985]
-offset_left = 56.0
-offset_top = 1000.0
-offset_right = 1896.0
-offset_bottom = 1017.0
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = 344.0
+offset_right = -16.0
+offset_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 value = 7.89
 show_percentage = false
@@ -160,3 +172,6 @@ libraries/ = SubResource("AnimationLibrary_5htga")
 
 [node name="WalkAudio3D" type="AudioStreamPlayer3D" parent="." unique_id=1622661030]
 stream = SubResource("AudioStreamRandomizer_lfmf2")
+
+[node name="HurtAudio3D" type="AudioStreamPlayer3D" parent="." unique_id=1431963164]
+stream = SubResource("AudioStreamRandomizer_pisgm")

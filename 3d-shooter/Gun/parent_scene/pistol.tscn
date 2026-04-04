@@ -8,11 +8,11 @@
 script = ExtResource("2_r0wwi")
 
 [node name="Marker3D" parent="." index="0" unique_id=1667523103]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3786329, 0.6889121)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3786329, 0.3632427)
 gizmo_extents = 0.29
 
 [node name="gun" parent="." index="1" unique_id=199253523 instance=ExtResource("2_smn1g")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="Spark" parent="." index="2" unique_id=1915387562]
-transform = Transform3D(0.6783759, 0, 0, 0, -0.6783759, -5.9305506e-08, 0, 5.9305506e-08, -0.6783759, 0, 0.3781191, 0.6910453)
+transform = Transform3D(0.6783759, 0, 0, 0, -0.6783759, -5.9305506e-08, 0, 5.9305506e-08, -0.6783759, 0, 0.3781191, 0.40241897)

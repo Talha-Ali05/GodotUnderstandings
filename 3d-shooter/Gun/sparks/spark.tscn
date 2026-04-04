@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://deb04ougpbqek"]
 
 [ext_resource type="Shader" uid="uid://bmxel3n18wpx6" path="res://shaders/muzzle_flash_billboard_side.gdshader" id="1_23t1r"]
-[ext_resource type="Texture2D" uid="uid://davdhwfjckqcl" path="res://assets/VFXs/MuzzelFlash.png" id="2_hdsly"]
+[ext_resource type="Texture2D" uid="uid://dmw73w7qs7ucu" path="res://assets/VFXs/muzzel_flash.png" id="2_hdsly"]
 [ext_resource type="Shader" uid="uid://j2hl6xfa01np" path="res://shaders/muzzle_flash_billboard_face.gdshader" id="3_y2w37"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gbnl3"]
