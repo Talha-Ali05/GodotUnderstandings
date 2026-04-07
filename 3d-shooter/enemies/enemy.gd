@@ -3,6 +3,7 @@ var player:CharacterBody3D
 @onready var bat_model: Node3D = $bat_model
 @onready var animation_player: AnimationPlayer = $bat_model/AnimationPlayer
 @onready var health_system: HealthSystem = $HealthSystem
+@onready var knock_back_c: KnockBackS = $KnockBackC
 
 var speed = 150.0
 
@@ -20,5 +21,6 @@ func _physics_process(_delta: float) -> void:
 
 
 func get_hurt(damage, hitbox):
+	knock_back_c.push(self,hitbox,Vector3.ZERO)
 	health_system.take_damage(hitbox.damage)
 	

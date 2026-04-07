@@ -10,7 +10,7 @@ func _ready() -> void:
 	hurt_box.hurt.connect(take_damage)
 	health_system.die.connect(func():	queue_free())
 	player = get_tree().get_first_node_in_group("player")
-	$Timer.wait_time = randi_range(1,3)
+	$Timer.wait_time = randi_range(5,10)
 func spawn_bat():
 	var bat = ENEMY.instantiate()
 	$Marker3D.add_child(bat)
@@ -22,4 +22,4 @@ func take_damage(damage,area:Area3D):
 
 func _on_timer_timeout() -> void:
 	spawn_bat()
-	$Timer.wait_time = randi_range(3,5)
+	$Timer.wait_time = randi_range(5,10)

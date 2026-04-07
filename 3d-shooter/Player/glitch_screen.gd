@@ -20,13 +20,18 @@ func _process(delta: float) -> void:
 	if not _player:
 		return
  
-	var hp_ratio: float = float(_player.health_system.health) \
-						/ float(_player.health_system.max_health)
-	# invert: low health → high fade
-	var target_fade: float = lerp(max_fade, min_fade, hp_ratio)
+	var hp_ratio: float = 1 - (float(_player.health_system.health) \
+						/ float(_player.health_system.max_health))
+	var target_fade: float = lerp(min_fade,max_fade, hp_ratio)
  
 	var current_fade: float = _mat.get_shader_parameter("fade")
 	_mat.set_shader_parameter(
 		"fade",
 		lerp(current_fade, target_fade, lerp_speed * delta)
+	)
+	if hp_ratio >=1:
+		max_fade = 1
+		_mat.set_shader_parameter(
+		"fade",
+		lerp(current_fade, target_fade, lerp_speed/2 * delta)
 	)

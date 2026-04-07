@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dfugkdkoww26w" path="res://State/enemy_state/bat/bat_chase.gd" id="6_3t1x0"]
 [ext_resource type="Script" uid="uid://dqpcx2wd0mtxa" path="res://enemies/attack.gd" id="7_epsnb"]
 [ext_resource type="Script" uid="uid://bv4rkbpgg8wwp" path="res://components/hit_box.gd" id="8_4w5fm"]
+[ext_resource type="Script" uid="uid://d00eltcigd7gi" path="res://enemies/knock_back_c.gd" id="9_uba7a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a6vjd"]
 size = Vector3(1.4802246, 0.81921387, 0.47436523)
@@ -89,5 +90,8 @@ script = ExtResource("7_epsnb")
 speed = 5.0
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://si0lw4gbrb7v"
+
+[node name="KnockBackC" type="Node" parent="." unique_id=2028734392]
+script = ExtResource("9_uba7a")
 
 [editable path="bat_model"]

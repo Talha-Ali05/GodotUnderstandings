@@ -1,4 +1,4 @@
-extends Bullet
+class_name ExplosiveBullet extends Bullet
 
 @export var blast_radius = 10
 @export var blast_intensity = 30
