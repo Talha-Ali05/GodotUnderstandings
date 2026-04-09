@@ -20,6 +20,7 @@ var blast_timer:float = .3
 
 @onready var camera_3d: Camera3D = $head/Camera3D
 @onready var head: Node3D = $head
+@onready var death_screen: Control = $CanvasLayer/DeathScreen
 
 
 
@@ -42,6 +43,8 @@ var original_cam_pos
 var original_gun_pos
 
 func _ready() -> void:
+	get_tree().paused = false
+	death_screen.hide()
 	original_gun_pos = gun_system.transform.origin
 	original_cam_pos = camera_3d.transform.origin
 	health_system.die.connect(game_over)
@@ -154,4 +157,6 @@ func set_blast_time(value):
 
 
 func game_over():
-	pass
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	death_screen.show()
+	get_tree().paused = true

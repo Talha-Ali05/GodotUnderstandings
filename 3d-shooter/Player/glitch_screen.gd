@@ -9,8 +9,9 @@ extends ColorRect
 @export var lerp_speed: float = 4.0
 # ───────────────────────────────────────────────────────────────
  
+var current_fade: float
 @onready var _mat: ShaderMaterial = material as ShaderMaterial
- 
+
 var _player: Player
  
 func _ready() -> void:
@@ -20,16 +21,16 @@ func _process(delta: float) -> void:
 	if not _player:
 		return
  
-	var hp_ratio: float = 1 - (float(_player.health_system.health) \
+	var hp_ratio: float = (float(_player.health_system.health) \
 						/ float(_player.health_system.max_health))
-	var target_fade: float = lerp(min_fade,max_fade, hp_ratio)
+	var target_fade: float = lerp(max_fade,min_fade, hp_ratio)
  
-	var current_fade: float = _mat.get_shader_parameter("fade")
+	current_fade= _mat.get_shader_parameter("fade")
 	_mat.set_shader_parameter(
 		"fade",
 		lerp(current_fade, target_fade, lerp_speed * delta)
 	)
-	if hp_ratio >=1:
+	if hp_ratio <=0:
 		max_fade = 1
 		_mat.set_shader_parameter(
 		"fade",

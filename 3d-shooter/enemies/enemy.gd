@@ -21,6 +21,6 @@ func _physics_process(_delta: float) -> void:
 
 
 func get_hurt(damage, hitbox):
-	knock_back_c.push(self,hitbox,Vector3.ZERO)
+	knock_back_c.push(self,hitbox)
 	health_system.take_damage(hitbox.damage)
 	

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://3hwrqfuauub8"]
+
+[ext_resource type="Script" uid="uid://w1f3sc6xoiof" path="res://UI/death_screen.gd" id="1_ls05l"]
+
+[node name="DeathScreen" type="Control" unique_id=967151142]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ls05l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1102796639]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = -22.5
+offset_right = 75.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=745755519]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "YOU DIED"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1312004580]
+layout_mode = 2
+alignment = 1
+
+[node name="RestartBtn" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=252752932]
+layout_mode = 2
+text = "RESART"
+
+[node name="HomeBtn" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=577614915]
+layout_mode = 2
+text = "HOME"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HomeBtn" to="." method="_on_home_btn_pressed"]

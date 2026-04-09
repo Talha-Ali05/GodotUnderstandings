@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://brsrusvt0yq3r" path="res://assets/SFXs/walk/freesound_community-concrete-footsteps-6752-4.wav" id="13_lfmf2"]
 [ext_resource type="AudioStream" uid="uid://butya5akvvj6t" path="res://assets/SFXs/walk/freesound_community-concrete-footsteps-6752-5.wav" id="14_pisgm"]
 [ext_resource type="AudioStream" uid="uid://colihfg1ax21b" path="res://assets/SFXs/hurt/hurt.mp3" id="15_dkpta"]
+[ext_resource type="PackedScene" uid="uid://3hwrqfuauub8" path="res://UI/death_screen.tscn" id="16_lfmf2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvfyp"]
 radius = 0.7832031
@@ -106,6 +107,19 @@ one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1934145693]
 
+[node name="GlitchScreen" type="ColorRect" parent="CanvasLayer" unique_id=267768143]
+process_mode = 3
+material = SubResource("ShaderMaterial_x3vf3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("7_x3vf3")
+
 [node name="Aim" type="TextureRect" parent="CanvasLayer" unique_id=498019662]
 anchors_preset = 8
 anchor_left = 0.5
@@ -137,18 +151,7 @@ value = 7.89
 show_percentage = false
 script = ExtResource("6_00tjw")
 
-[node name="GlitchScreen" type="ColorRect" parent="CanvasLayer" unique_id=267768143]
-process_mode = 3
-material = SubResource("ShaderMaterial_x3vf3")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-script = ExtResource("7_x3vf3")
+[node name="DeathScreen" parent="CanvasLayer" unique_id=967151142 instance=ExtResource("16_lfmf2")]
 
 [node name="HurtBox" type="Area3D" parent="." unique_id=1485935434]
 collision_layer = 2
