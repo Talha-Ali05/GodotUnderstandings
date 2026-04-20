@@ -1,7 +1,9 @@
 extends Control
 
-@export var player:CharacterBody3D
+@export var player:Player
 
 func  _process(_delta: float) -> void:
 	var fps = Performance.get_monitor(Performance.TIME_FPS)
-	$FPS.text = "FPS :" + str(fps)
+	$FPS.text = "FPS : " + str(fps)
+	if player:
+		$CanDash.text = "CanDash : " + str(player.can_dash)

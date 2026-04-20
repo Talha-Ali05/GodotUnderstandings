@@ -105,6 +105,10 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
+[node name="DashCoolDown" type="Timer" parent="." unique_id=377117513]
+wait_time = 5.0
+one_shot = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1934145693]
 
 [node name="GlitchScreen" type="ColorRect" parent="CanvasLayer" unique_id=267768143]
@@ -168,7 +172,8 @@ debug_color = Color(0.22571957, 0.63867587, 0, 0.41960785)
 script = ExtResource("7_vtle1")
 metadata/_custom_type_script = "uid://04gndijhfv62"
 
-[node name="Debug_menu" parent="." unique_id=2133041081 instance=ExtResource("8_od3ui")]
+[node name="Debug_menu" parent="." unique_id=2133041081 node_paths=PackedStringArray("player") instance=ExtResource("8_od3ui")]
+player = NodePath("..")
 
 [node name="GunAnimations" type="AnimationPlayer" parent="." unique_id=325352592]
 libraries/ = SubResource("AnimationLibrary_5htga")

@@ -4,8 +4,11 @@ class_name Player extends CharacterBody3D
 @export var sprint_speed = 12.0
 @export var jump_force = 12.0
 var base_speed = speed
-@export var fric = 30.0    
+@export var fric = 30.0
+@export var acceleration = 80.0
+@export var air_acceleration = 20.0
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+@export var dash_speed := 10.0
 
 var base_fov = 75.0
 var fov_change = 2.0
@@ -21,6 +24,7 @@ var blast_timer:float = .3
 @onready var camera_3d: Camera3D = $head/Camera3D
 @onready var head: Node3D = $head
 @onready var death_screen: Control = $CanvasLayer/DeathScreen
+@onready var dash_cool_down: Timer = $DashCoolDown
 
 
 
@@ -34,6 +38,7 @@ var blast_timer:float = .3
 var can_jump = true
 var was_on_floor:bool
 
+var can_dash = true
 
 var walk_can_play:=true
 var walk_landed:bool
@@ -69,6 +74,7 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	movement_system(_delta)
+	air_strafe(_delta)
 	gun_positioning()
 	jump_system(_delta)
 
@@ -102,13 +108,35 @@ func movement_system(_delta):
 	var input_dir_3d = Vector3(input_dir_2d.x,0.0,input_dir_2d.y)
 	var direction = (transform.basis * input_dir_3d).normalized()
 	if input_dir_2d:
-		velocity.x= speed*direction.x
-		velocity.z= speed*direction.z
+			var accel = acceleration if is_on_floor() else air_acceleration
+			var target_x = direction.x * speed
+			var target_z = direction.z * speed
+			velocity.x = move_toward(velocity.x, target_x, accel * _delta)
+			velocity.z = move_toward(velocity.z, target_z, accel * _delta)
 	if blast_timer <= 0:
 		var current_fric = fric if is_on_floor() else 8.0
 		velocity.x= move_toward(velocity.x,0,current_fric * _delta)
 		velocity.z= move_toward(velocity.z,0,current_fric * _delta)
+	dash_system(direction)
 
+func air_strafe(_delta):
+	if is_on_floor():
+		return
+	
+	var input_dir_2d = Input.get_vector("move_left","move_right","move_forward","move_backward")
+	if input_dir_2d == Vector2.ZERO:
+		return
+	
+	var wish_dir = (transform.basis * Vector3(input_dir_2d.x, 0, input_dir_2d.y)).normalized()
+	
+	var current_speed = velocity.dot(wish_dir)
+	var add_speed = 1.5 * _delta * speed
+	
+	if add_speed + current_speed > speed:
+		add_speed = speed - current_speed
+	
+	if add_speed > 0:
+		velocity += wish_dir * add_speed
 
 func jump_system (_delta):
 	if was_on_floor and not is_on_floor():
@@ -120,6 +148,7 @@ func jump_system (_delta):
 	if Input.is_action_just_pressed("jump") and can_jump:
 		velocity.y = jump_force
 		can_jump = false
+		$coyoteTime.stop()
 	elif Input.is_action_just_released("jump") and velocity.y >0.0:
 		velocity.y = 0
 	if velocity.y <0.0 and not is_on_floor():
@@ -138,6 +167,16 @@ func gun_positioning():
 func collect_system(value):
 	health_system.heal(value)
 
+
+func dash_system(dir):
+	if can_dash:
+		if Input.is_action_just_pressed("dash") and not velocity.length() == 0.0:
+			velocity += dir * dash_speed
+			dash_cool_down.start()
+			can_dash = false
+	if dash_cool_down.time_left <=0:
+		can_dash = true
+
 func head_bob(new_time) ->Vector3:
 	var pos:= Vector3.ZERO
 	pos.y = sin(new_time*head_bob_freq)*head_bob_ampl
@@ -149,7 +188,7 @@ func head_bob(new_time) ->Vector3:
 		walk_can_play = false
 		$WalkAudio3D.play()
 	return pos
-	
+
 
 func set_blast_time(value):
 	blast_timer = value

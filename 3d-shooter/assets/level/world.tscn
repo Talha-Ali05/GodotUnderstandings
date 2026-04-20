@@ -35,6 +35,7 @@ metadata/_edit_group_ = true
 
 [node name="Player" parent="." unique_id=1359448494 instance=ExtResource("2_lluvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+dash_speed = 30.0
 
 [node name="Level" type="CSGCombiner3D" parent="." unique_id=411500830]
 use_collision = true
