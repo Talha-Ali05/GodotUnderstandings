@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dfx6hlbl1663t"]
+
+[ext_resource type="Script" uid="uid://dtovi80edsq6b" path="res://Interaction/interaction_manager.gd" id="1_2a4m8"]
+
+[node name="InteractionManager" type="Node3D" unique_id=1670413951]
+script = ExtResource("1_2a4m8")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=2128885090]
+visible = false
+billboard = 1
+text = "Press [E] to"
+font_size = 64
