@@ -20,6 +20,7 @@ func _process(_delta: float) -> void:
 		label.show()
 	else:
 		label.hide()
+	input()
 
 func register_interaction(area:InteractionArea):
 	interactions.push_back(area)
@@ -36,8 +37,8 @@ func sort_by_dist(area1:InteractionArea,area2:InteractionArea):
 		return area1_to_player > area2_to_player
 	
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_just_pressed("Interact") and can_interact:
+func input():
+	if Input.is_action_just_released("Interact") and can_interact:
 			if interactions.size() >0:
 				can_interact = false
 				label.hide()

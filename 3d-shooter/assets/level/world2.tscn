@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cs4cofhjclnud"]
+
+[ext_resource type="PackedScene" uid="uid://gbmpn7q4h6la" path="res://Player/player.tscn" id="1_0185b"]
+[ext_resource type="Script" uid="uid://ceifvkaf728ou" path="res://assets/level/islands_manager.gd" id="3_boy1k"]
+[ext_resource type="PackedScene" uid="uid://b1wclq3nc1kil" path="res://Islands/simple_island/island.tscn" id="4_oufxw"]
+[ext_resource type="PackedScene" uid="uid://dln0ysbnlvw4c" path="res://assets/level/debug_menu.tscn" id="5_32v5o"]
+[ext_resource type="PackedScene" uid="uid://8m73ucy23us" path="res://Islands/simple_island/island4.tscn" id="5_sqtqc"]
+[ext_resource type="PackedScene" uid="uid://bc7vvp2dkhg2a" path="res://Islands/simple_island/island3.tscn" id="6_32v5o"]
+[ext_resource type="PackedScene" uid="uid://blqbnuo3wqkr2" path="res://Islands/simple_island/island2.tscn" id="7_liash"]
+[ext_resource type="Script" uid="uid://bm0rj5hd406n4" path="res://assets/level/island_manager.gd" id="8_sqtqc"]
+[ext_resource type="PackedScene" uid="uid://dv0qrbuwf65re" path="res://Islands/heal_islands/heal_island1.tscn" id="9_toigh"]
+[ext_resource type="PackedScene" uid="uid://7syw3d2rwmfn" path="res://Islands/heal_islands/heal_island2.tscn" id="10_jgv2j"]
+[ext_resource type="PackedScene" uid="uid://dwpa3hylrmfma" path="res://Islands/heal_islands/heal_island3.tscn" id="11_d812r"]
+
+[sub_resource type="Environment" id="Environment_5brps"]
+background_mode = 1
+background_color = Color(0.93573904, 0.43540835, 0.35828733, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72651106, 0.62274784, 0.5617414, 1)
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.83659464, 0.40154806, 0.318997, 1)
+fog_height = 0.2
+fog_height_density = 0.5
+
+[node name="World" type="Node3D" unique_id=299005705]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=779705976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+use_collision = true
+size = Vector3(15, 3, 14.313477)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1368194546]
+environment = SubResource("Environment_5brps")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2091316485]
+transform = Transform3D(-0.47092307, 0.18415383, 0.86273915, 0.7267953, 0.63528526, 0.2611154, -0.50000006, 0.75000006, -0.4330126, 0, 38.69225, 0)
+layers = 3
+shadow_enabled = true
+metadata/_edit_group_ = true
+
+[node name="Player" parent="." unique_id=1359448494 instance=ExtResource("1_0185b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+dash_speed = 30.0
+
+[node name="Debug_menu" parent="." unique_id=2133041081 instance=ExtResource("5_32v5o")]
+
+[node name="IslandsPlacer" type="Node3D" parent="." unique_id=269418484]
+script = ExtResource("3_boy1k")
+base_radius = 15.0
+radius_increment = 5.0
+angle_step = 30.0
+angle_jitter = 10.0
+radius_jitter = 5.0
+
+[node name="Timer" type="Timer" parent="IslandsPlacer" unique_id=1756329718]
+autostart = true
+
+[node name="Islands" type="Node3D" parent="IslandsPlacer" unique_id=1801128247]
+
+[node name="IslandManager" type="Node" parent="." unique_id=1639879989]
+script = ExtResource("8_sqtqc")
+simple_islands = Array[PackedScene]([ExtResource("4_oufxw"), ExtResource("7_liash"), ExtResource("6_32v5o"), ExtResource("5_sqtqc")])
+combat_islands = Array[PackedScene]([ExtResource("4_oufxw"), null, ExtResource("5_sqtqc")])
+heal_islands = Array[PackedScene]([ExtResource("9_toigh"), ExtResource("10_jgv2j"), ExtResource("11_d812r")])
+
+[connection signal="timeout" from="IslandsPlacer/Timer" to="IslandsPlacer" method="_on_timer_timeout"]
+[connection signal="timeout" from="IslandsPlacer/Timer" to="IslandManager" method="_on_timer_timeout"]

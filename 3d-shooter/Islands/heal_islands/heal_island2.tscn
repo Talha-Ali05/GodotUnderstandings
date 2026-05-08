@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://7syw3d2rwmfn"]
+
+[ext_resource type="Script" uid="uid://d3ed8b4k2cku2" path="res://Islands/island.gd" id="1_q4q15"]
+[ext_resource type="Material" uid="uid://bjgavs2y5rlw" path="res://materials/test.tres" id="2_cc5wc"]
+[ext_resource type="PackedScene" uid="uid://d0ifia2qnx24i" path="res://components/collectables/heal_box.tscn" id="3_cc5wc"]
+
+[node name="Island" type="Node3D" unique_id=236714011]
+script = ExtResource("1_q4q15")
+island_radius = 30.0
+metadata/_custom_type_script = "uid://d3ed8b4k2cku2"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=823546236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -10.5)
+material_override = ExtResource("2_cc5wc")
+use_collision = true
+size = Vector3(22, 4, 9)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=14752766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 9.5, 0.5)
+material_override = ExtResource("2_cc5wc")
+use_collision = true
+size = Vector3(22, 4, 9)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=139080245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 8.5, 13.5)
+material_override = ExtResource("2_cc5wc")
+use_collision = true
+size = Vector3(22, 18, 11)
+
+[node name="heal_box" parent="CSGBox3D2" unique_id=2067271826 instance=ExtResource("3_cc5wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)

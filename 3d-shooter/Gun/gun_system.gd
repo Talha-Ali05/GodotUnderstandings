@@ -7,7 +7,10 @@ extends Node3D
 
 
 var guns:Array[GunsData.Guns] = [GunsData.Guns.PISTOL,GunsData.Guns.LAUNCHER]
-var current_gun_data:GunsData.Guns
+var current_gun_data:GunsData.Guns:
+	set(value):
+		current_gun_data = value as GunsData.Guns
+		swap_gun(current_gun_data)
 
 var current_gun:GunModel
 
@@ -33,13 +36,13 @@ func _process(_delta: float) -> void:
 					$ShootTimer.start()
 	if Input.is_action_just_pressed("Weapon1"):
 		current_gun_data = guns[0]
-		swap_gun(current_gun_data)
 	if Input.is_action_just_pressed("Weapon2"):
 		current_gun_data = guns[1]
-		swap_gun(current_gun_data)
-		
+	if Input.is_action_just_pressed("gun_up"):
+		current_gun_data = posmod(current_gun_data +1,guns.size())
+	if Input.is_action_just_pressed("gun_down"):
+		current_gun_data = posmod(current_gun_data -1,guns.size())
 	bullet_system.reload()
-
 func shoot():
 	var new_bullet = gun.bullet_scene.instantiate()
 	get_tree().root.add_child(new_bullet)
@@ -68,6 +71,7 @@ func swap_gun(new_gun:GunsData.Guns):
 	
 	gun = GunsData.guns_data[new_gun]
 	bullet_system.max_capacity = gun.bullets
+	bullet_system.current_bullets = bullet_system.max_capacity
 	gun_sound_3d.stream = gun.gun_sound
 	if gun.shoot_time > 0:
 		$ShootTimer.wait_time = gun.shoot_time

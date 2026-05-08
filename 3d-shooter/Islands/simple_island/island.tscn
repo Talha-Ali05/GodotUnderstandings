@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b1wclq3nc1kil"]
+
+[ext_resource type="Material" uid="uid://bjgavs2y5rlw" path="res://materials/test.tres" id="1_jd6pc"]
+[ext_resource type="Script" uid="uid://d3ed8b4k2cku2" path="res://Islands/island.gd" id="1_wruuf"]
+
+[node name="Island" type="Node3D" unique_id=181676901]
+script = ExtResource("1_wruuf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1764309512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
+material_override = ExtResource("1_jd6pc")
+use_collision = true
+size = Vector3(16, 4, 16)

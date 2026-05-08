@@ -64,6 +64,11 @@ random_pitch = 1.0717734
 streams_count = 1
 stream_0/stream = ExtResource("15_dkpta")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfmf2"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lfmf2"]
+
 [node name="Player" type="CharacterBody3D" unique_id=1359448494 groups=["player"]]
 collision_layer = 3
 collision_mask = 9
@@ -183,3 +188,8 @@ stream = SubResource("AudioStreamRandomizer_lfmf2")
 
 [node name="HurtAudio3D" type="AudioStreamPlayer3D" parent="." unique_id=1431963164]
 stream = SubResource("AudioStreamRandomizer_pisgm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1290193265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_lfmf2")
+mesh = SubResource("CapsuleMesh_lfmf2")

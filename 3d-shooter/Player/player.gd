@@ -141,7 +141,7 @@ func air_strafe(_delta):
 func jump_system (_delta):
 	if was_on_floor and not is_on_floor():
 		$coyoteTime.start()
-	velocity.y -= 35*_delta
+	velocity.y -= (35)*_delta
 	velocity.y = clamp(velocity.y,-100,50)
 	if is_on_floor():
 		can_jump = true
