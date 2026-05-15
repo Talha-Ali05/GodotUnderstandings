@@ -69,6 +69,6 @@ func _on_timer_timeout() -> void:
 	if current_angle > 360.0:
 		rings += 1
 		current_radius += radius_increment
-		$Timer.wait_time += 1
+		$Timer.wait_time += .5
 		current_angle = fmod(current_angle, 360.0)
 		level_up.emit(rings)

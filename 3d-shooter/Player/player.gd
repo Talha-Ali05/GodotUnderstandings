@@ -113,7 +113,7 @@ func movement_system(_delta):
 			var target_z = direction.z * speed
 			velocity.x = move_toward(velocity.x, target_x, accel * _delta)
 			velocity.z = move_toward(velocity.z, target_z, accel * _delta)
-	if blast_timer <= 0:
+	elif blast_timer <= 0:
 		var current_fric = fric if is_on_floor() else 8.0
 		velocity.x= move_toward(velocity.x,0,current_fric * _delta)
 		velocity.z= move_toward(velocity.z,0,current_fric * _delta)
